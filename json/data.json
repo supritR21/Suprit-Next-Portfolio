@@ -1,0 +1,206 @@
+{
+  "Projects": [
+    {
+      "show": true,
+      "title": "Invoice Sync",
+      "desc": [
+        "Invoice Sync is a modern invoice management web application built for small businesses to simplify billing, payment tracking, and client communication.",
+        "Developed with Next.js, TypeScript, Tailwind CSS, Prisma ORM, and PostgreSQL, it enables users to create, send, and manage invoices efficiently with automatic status tracking and PDF export.",
+        "The app includes secure authentication with NextAuth, role-based access, and analytics dashboards displaying revenue trends and outstanding payments."
+      ],
+      "year": "2025",
+      "preview": "https://invoice-sync.vercel.app",
+      "code": "https://github.com/supritraj/invoice-sync",
+      "thumbnail": "/image/projects/web/invoice-sync/invoice-sync-thumbnail.png",
+      "images": [
+        "/image/projects/web/invoice-sync/invoice1.png",
+        "/image/projects/web/invoice-sync/invoice2.png",
+        "/image/projects/web/invoice-sync/invoice3.png"
+      ],
+      "tech": [
+        "Next.js",
+        "TypeScript",
+        "Tailwind CSS",
+        "Prisma",
+        "PostgreSQL",
+        "NextAuth"
+      ],
+      "slug": "invoice-sync",
+      "category": [1]
+    },
+    {
+      "show": true,
+      "title": "AI Resume Analyzer",
+      "desc": [
+        "AI Resume Analyzer is an intelligent resume analysis platform that uses NLP and ML models to evaluate candidate resumes for ATS optimization and job fit.",
+        "It scores resumes based on keyword density, formatting, and skill match, providing actionable feedback to improve hiring outcomes.",
+        "The platform integrates OpenAI GPT models and scikit-learn pipelines for recommendation logic and was built using Flask, React, and Python."
+      ],
+      "year": "2025",
+      "preview": "",
+      "code": "https://github.com/supritraj/ai-resume-analyzer",
+      "thumbnail": "/image/projects/ai/resume-analyzer/resume-analyzer-thumbnail.png",
+      "images": [
+        "/image/projects/ai/resume-analyzer/resume1.png",
+        "/image/projects/ai/resume-analyzer/resume2.png"
+      ],
+      "tech": [
+        "Python",
+        "Flask",
+        "React",
+        "scikit-learn",
+        "OpenAI API"
+      ],
+      "slug": "ai-resume-analyzer",
+      "category": [2]
+    },
+    {
+      "show": true,
+      "title": "Portfolio Website v2",
+      "desc": [
+        "My second personal portfolio website built with Next.js 14 App Router, Tailwind CSS, and Framer Motion.",
+        "It showcases my projects, resume, and GitHub activity through real-time integrations. Optimized for SEO and performance with responsive animations and dynamic routing.",
+        "Includes dark/light mode, a contact form powered by Resend API, and a CMS-driven project management system."
+      ],
+      "year": "2025",
+      "preview": "https://supritraj.vercel.app",
+      "code": "https://github.com/supritraj/portfolio-v2",
+      "thumbnail": "/image/projects/web/portfolio-v2/portfolio-v2-thumbnail.png",
+      "images": [
+        "/image/projects/web/portfolio-v2/portfolio1.png",
+        "/image/projects/web/portfolio-v2/portfolio2.png",
+        "/image/projects/web/portfolio-v2/portfolio3.png"
+      ],
+      "tech": [
+        "Next.js",
+        "TypeScript",
+        "Tailwind CSS",
+        "Framer Motion",
+        "Resend API"
+      ],
+      "slug": "portfolio-v2",
+      "category": [1]
+    },
+    {
+      "show": true,
+      "title": "TaskPilot",
+      "desc": [
+        "TaskPilot is a productivity and team collaboration web app for managing projects and tasks with real-time sync and Kanban board support.",
+        "Built using React, Firebase, and Zustand, it provides task assignment, notifications, and role-based workspaces.",
+        "Implements offline persistence with IndexedDB and modern UI transitions using Framer Motion."
+      ],
+      "year": "2024",
+      "preview": "https://taskpilot.vercel.app",
+      "code": "https://github.com/supritraj/taskpilot",
+      "thumbnail": "/image/projects/web/taskpilot/taskpilot-thumbnail.png",
+      "images": [
+        "/image/projects/web/taskpilot/taskpilot1.png",
+        "/image/projects/web/taskpilot/taskpilot2.png"
+      ],
+      "tech": [
+        "React",
+        "Firebase",
+        "Zustand",
+        "Framer Motion"
+      ],
+      "slug": "taskpilot",
+      "category": [1]
+    },
+    {
+      "show": true,
+      "title": "Blogify AI",
+      "desc": [
+        "Blogify AI is a full-stack AI-powered content generation platform that transforms topics into SEO-ready blog posts using GPT-4 and Markdown formatting.",
+        "Users can create, edit, and publish posts, with cloud image upload and AI-assisted tagging.",
+        "The app was developed with Next.js, Prisma, PostgreSQL, and the OpenAI API, and includes an integrated text editor with syntax highlighting."
+      ],
+      "year": "2024",
+      "preview": "https://blogify-ai.vercel.app",
+      "code": "https://github.com/supritraj/blogify-ai",
+      "thumbnail": "/image/projects/ai/blogify-ai/blogify-thumbnail.png",
+      "images": [
+        "/image/projects/ai/blogify-ai/blogify1.png",
+        "/image/projects/ai/blogify-ai/blogify2.png"
+      ],
+      "tech": [
+        "Next.js",
+        "OpenAI API",
+        "Prisma",
+        "PostgreSQL",
+        "Tailwind CSS"
+      ],
+      "slug": "blogify-ai",
+      "category": [1, 2]
+    },
+    {
+      "show": true,
+      "title": "SmartVision – Object Detection App",
+      "desc": [
+        "SmartVision is a computer vision application that identifies and labels real-world objects from a live webcam feed using TensorFlow.js and YOLOv8.",
+        "It was designed to be educational, interactive, and runs entirely in the browser without server-side dependencies."
+      ],
+      "year": "2023",
+      "preview": "https://smartvision-ai.vercel.app",
+      "code": "https://github.com/supritraj/smartvision",
+      "thumbnail": "/image/projects/ai/smartvision/smartvision-thumbnail.png",
+      "images": [
+        "/image/projects/ai/smartvision/smartvision1.png",
+        "/image/projects/ai/smartvision/smartvision2.png"
+      ],
+      "tech": [
+        "TensorFlow.js",
+        "React",
+        "YOLOv8",
+        "Tailwind CSS"
+      ],
+      "slug": "smartvision",
+      "category": [2]
+    },
+    {
+      "show": true,
+      "title": "EduSphere LMS",
+      "desc": [
+        "EduSphere is a learning management system (LMS) that supports course creation, quiz generation, and progress tracking.",
+        "Built using Laravel, MySQL, and Bootstrap, it features an admin dashboard, student progress tracking, and automated certificate generation."
+      ],
+      "year": "2023",
+      "preview": "",
+      "code": "https://github.com/supritraj/edusphere-lms",
+      "thumbnail": "/image/projects/web/edusphere/edusphere-thumbnail.png",
+      "images": [
+        "/image/projects/web/edusphere/edusphere1.png",
+        "/image/projects/web/edusphere/edusphere2.png"
+      ],
+      "tech": [
+        "PHP",
+        "Laravel",
+        "Bootstrap",
+        "MySQL"
+      ],
+      "slug": "edusphere-lms",
+      "category": [1]
+    },
+    {
+      "show": true,
+      "title": "Portfolio v1 (Legacy)",
+      "desc": [
+        "My first personal portfolio website built with React and Tailwind CSS. It served as the foundation for my modern design and component organization approach.",
+        "Includes project showcases, responsive design, and scroll animations powered by AOS."
+      ],
+      "year": "2022",
+      "preview": "https://supritraj-old.vercel.app",
+      "code": "https://github.com/supritraj/portfolio",
+      "thumbnail": "/image/projects/web/portfolio-v1/portfolio-thumbnail.png",
+      "images": [
+        "/image/projects/web/portfolio-v1/portfolio1.png"
+      ],
+      "tech": [
+        "React",
+        "Tailwind CSS",
+        "AOS"
+      ],
+      "slug": "portfolio-v1",
+      "category": [1]
+    }
+  ]
+}
