@@ -190,13 +190,13 @@ export default function MyPage() {
                       title: "LeetCode",
                       rating: "1694",
                       link: "https://leetcode.com/u/Suprit_Raj/",
-                      color: "text-yellow-600",
+                      color: "text-blue-600",
                     },
                     {
                       title: "CodeChef",
                       rating: "1323",
                       link: "https://www.codechef.com/users/suprit_r21",
-                      color: "text-orange-600",
+                      color: "text-blue-600",
                     },
                     {
                       title: "Codeforces",
