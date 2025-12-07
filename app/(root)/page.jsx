@@ -23,9 +23,14 @@ import MeAbout from "@/public/image/me2.jpg";
 import Setup from "@/public/image/setup.jpg";
 import ProjectAll from "@/public/image/projects.png";
 
+import { useState } from "react";
+import Sidebar from "@/components/Sidebar";
+
 const sectionTransition = { type: "spring", stiffness: 80, damping: 15 };
 
 export default function MyPage() {
+  const [activeSection, setActiveSection] = useState(1);
+
   const fullpageOptions = {
     anchors: [
       "home-section",
@@ -41,17 +46,13 @@ export default function MyPage() {
 
   return (
     <div>
+      {/* Sidebar always in sync */}
+      <Sidebar activeSection={activeSection} />
+
       <ReactFullpage
         {...fullpageOptions}
         afterLoad={(origin, destination) => {
-          // Sync sidebar highlight
-          const active = destination.anchor;
-          const items = document.querySelectorAll("#sidebar li");
-          items.forEach((item) => item.classList.remove("bg-gray-500"));
-          const activeItem = document.querySelector(
-            `[data-menuanchor='${active}']`
-          );
-          if (activeItem) activeItem.classList.add("bg-gray-500");
+          setActiveSection(destination.index + 1); // sync to Sidebar
         }}
         render={() => (
           <ReactFullpage.Wrapper>
@@ -72,7 +73,7 @@ export default function MyPage() {
                     Suprit Raj
                   </h3>
                   <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-black">
-                    Full Stack & AI Developer
+                    Full Stack & GenAI Developer
                   </h1>
                   <p className="text-md md:text-lg text-gray-600 leading-relaxed max-w-2xl">
                     I’m Suprit, a B.Tech CSE student at NIT Patna passionate
@@ -81,6 +82,7 @@ export default function MyPage() {
                     and full-stack development using Next.js, FastAPI, and
                     vector databases.
                   </p>
+
                   <div className="flex flex-wrap justify-center md:justify-start gap-4 pt-4">
                     <Button variation="primary">
                       <Link
@@ -92,6 +94,7 @@ export default function MyPage() {
                         Download CV
                       </Link>
                     </Button>
+
                     <Button variation="secondary">
                       <a href="#contact-section">Contact Me</a>
                     </Button>
@@ -213,6 +216,7 @@ export default function MyPage() {
                           {proj.subtitle}
                         </p>
                         <p className="text-sm text-gray-500 mt-2">{proj.tech}</p>
+
                         <a
                           href={proj.link}
                           target="_blank"
@@ -300,7 +304,7 @@ export default function MyPage() {
   );
 }
 
-/* ------------------ SMALL COMPONENT: SOCIAL ICON ------------------ */
+/* --- SOCIAL ICON COMPONENT --- */
 function SocialIcon({ href, icon }) {
   return (
     <a

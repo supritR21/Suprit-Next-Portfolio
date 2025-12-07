@@ -5,10 +5,13 @@ import { motion } from "framer-motion";
 import Button from "@/components/Button";
 import Image from "next/image";
 
+// HERO IMAGE
 import ProjectAll from "@/public/image/projects.png";
-import Intervyou1 from "@/public/image/projects/web/intervyou/intervyou-1.png";
-import Intervyou2 from "@/public/image/projects/web/intervyou/intervyou-2.png";
-import Intervyou3 from "@/public/image/projects/web/intervyou/intervyou-3.png";
+
+// 🔄 UPDATED — Replace with Smart Meet images
+import SmartMeet1 from "@/public/image/projects/web/smartmeet/smartmeet-1.jpg";
+import SmartMeet2 from "@/public/image/projects/web/smartmeet/smartmeet-2.jpg";
+import SmartMeet3 from "@/public/image/projects/web/smartmeet/smartmeet-3.jpg";
 
 import Hr from "@/components/Hr";
 import ProjectCard from "./components/ProjectCard";
@@ -17,12 +20,12 @@ import FixedButton from "@/components/FixedButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 
-// Define categories clearly
+// Define categories
 const category = {
   1: "Web Development",
-  2: "AI & Machine Learning",
-  9: "Other Projects",
+  2: "AI & Machine Learning"
 };
+
 
 export default function Page() {
   const [activeCategory, setActiveCategory] = useState("1");
@@ -85,35 +88,56 @@ export default function Page() {
         </div>
       </section>
 
-      {/* FEATURED PROJECT: Intervyou AI */}
+      {/* FEATURED PROJECT — SMART MEET */}
       <section className="relative container mx-auto px-6 md:px-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-center my-20">
         {/* Images */}
         <div className="relative w-full h-[500px]">
+          {/* Image 1 */}
           <motion.div
             initial={{ opacity: 0, scale: 0.5, x: 100 }}
             whileInView={{ opacity: 1, scale: 1, x: 0 }}
             transition={{ delay: 0.2 }}
             className="absolute top-24 left-10 w-1/2 aspect-video rounded-xl overflow-hidden shadow-lg grayscale hover:grayscale-0 hover:scale-110 transition-all duration-500"
           >
-            <Image src={Intervyou1} alt="Intervyou Screenshot 1" layout="fill" objectFit="cover" placeholder="blur" />
+            <Image
+              src={SmartMeet1}
+              alt="Smart Meet Screenshot 1"
+              layout="fill"
+              objectFit="cover"
+              placeholder="blur"
+            />
           </motion.div>
 
+          {/* Image 2 */}
           <motion.div
             initial={{ opacity: 0, scale: 0.5, x: -100 }}
             whileInView={{ opacity: 1, scale: 1, x: 0 }}
             transition={{ delay: 0.4 }}
             className="absolute top-5 right-20 w-1/3 aspect-video rounded-xl overflow-hidden shadow-lg grayscale hover:grayscale-0 hover:scale-110 transition-all duration-500"
           >
-            <Image src={Intervyou3} alt="Intervyou Screenshot 2" layout="fill" objectFit="cover" placeholder="blur" />
+            <Image
+              src={SmartMeet3}
+              alt="Smart Meet Screenshot 2"
+              layout="fill"
+              objectFit="cover"
+              placeholder="blur"
+            />
           </motion.div>
 
+          {/* Image 3 */}
           <motion.div
             initial={{ opacity: 0, scale: 0.5, x: -100 }}
             whileInView={{ opacity: 1, scale: 1, x: 0 }}
             transition={{ delay: 0.6 }}
             className="absolute bottom-10 right-10 w-1/2 aspect-video rounded-xl overflow-hidden shadow-lg grayscale hover:grayscale-0 hover:scale-110 transition-all duration-500"
           >
-            <Image src={Intervyou2} alt="Intervyou Screenshot 3" layout="fill" objectFit="cover" placeholder="blur" />
+            <Image
+              src={SmartMeet2}
+              alt="Smart Meet Screenshot 3"
+              layout="fill"
+              objectFit="cover"
+              placeholder="blur"
+            />
           </motion.div>
         </div>
 
@@ -125,21 +149,26 @@ export default function Page() {
           className="flex flex-col justify-center"
         >
           <h2 className="text-3xl font-bold mb-4 text-gray-900">
-            Intervyou AI
+            Smart Meet
           </h2>
           <p className="text-gray-600 text-justify leading-relaxed mb-6">
-            An AI-powered interview preparation platform helping users improve
-            communication, gesture, and response analysis through machine
-            learning insights. Built using Next.js, TypeScript, TailwindCSS,
-            Shadcn UI, Prisma, and MySQL (TiDB).
+            Smart Meet is an AI-powered meeting platform that records,
+            transcribes, and summarizes your meetings in real time.
+            It features intelligent AI agents for instant summaries,
+            action-item extraction, highlights, and deep insights across every
+            conversation. Built using Next.js 15, TypeScript, TailwindCSS,
+            Drizzle ORM, Neon DB, Stream Video SDK, OpenAI Realtime API,
+            tRPC, TanStack Query, and Better Auth.
           </p>
+
           <div className="flex gap-3">
             <Button variation="primary">
-              <Link href="projects/intervyou">More</Link>
+              <Link href="projects/smartmeet">More</Link>
             </Button>
+
             <Button variation="secondary">
               <a
-                href="https://www.intervyou.me"
+                href="https://github.com/supritR21/Smart-Meet"
                 target="_blank"
                 rel="noopener noreferrer"
               >
