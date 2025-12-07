@@ -29,7 +29,7 @@ COPY --from=base /app/public ./public
 COPY --from=base /app/node_modules ./node_modules
 
 # 9️⃣ Expose Port
-EXPOSE 3000
+EXPOSE 10000
 
 # 🔟 Start App
 CMD ["npm", "start"]
