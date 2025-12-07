@@ -13,6 +13,7 @@ export const metadata = {
 	description:
 		"I’m Suprit Raj — a passionate Full Stack & AI Developer, building innovative web solutions and AI-powered systems. Currently pursuing B.Tech in Computer Science at NIT Patna.",
 	author: "Suprit Raj",
+	metadataBase: new URL("https://supritraj.me"),
 	siteUrl: "https://supritraj.me",
 	applicationName: "Suprit Raj Portfolio",
 	keywords: [

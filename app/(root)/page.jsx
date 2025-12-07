@@ -100,7 +100,6 @@ export default function MyPage() {
                     </Button>
                   </div>
                 </motion.div>
-
                 {/* RIGHT IMAGE */}
                 <motion.div
                   initial={{ x: 100, opacity: 0 }}
@@ -115,57 +114,121 @@ export default function MyPage() {
                       height={400}
                       alt="Portrait of Suprit Raj"
                       placeholder="blur"
-                      className="object-cover w-full h-full"
+                      className="object-cover object-top w-full h-full"
                     />
                   </div>
                 </motion.div>
+
               </div>
             </section>
-
             {/* ========================= ABOUT ========================= */}
             <section
               className="section bg-gray-50 px-10 md:px-20 pl-20 md:pl-32"
               data-anchor="about-section"
             >
-              <div className="relative flex flex-col md:flex-row items-center justify-between h-full w-full overflow-hidden pt-10 md:pt-20">
+              <div className="flex flex-col md:flex-row items-center justify-between min-h-screen w-full pt-24 md:pt-28 gap-14">
+
+                {/* LEFT TEXT */}
                 <motion.div
                   initial={{ x: -100, opacity: 0 }}
                   whileInView={{ x: 0, opacity: 1 }}
                   transition={sectionTransition}
-                  className="z-10 md:w-1/2 space-y-5"
+                  className="md:w-1/2 space-y-6"
                 >
-                  <h1 className="text-5xl md:text-7xl font-bold text-black">
+                  <h1 className="text-5xl md:text-7xl font-bold leading-tight text-black">
                     About Me
                   </h1>
+
                   <Hr />
-                  <p className="text-lg text-gray-600 leading-relaxed">
-                    I’m deeply interested in creating intelligent systems that
-                    blend AI with modern web technologies. My expertise spans
-                    React, Next.js, FastAPI, and vector databases like Pinecone.
-                    I aim to build systems that are efficient, reliable, and
-                    human-centric.
+
+                  <p className="text-lg text-gray-700 leading-relaxed">
+                    I’m a B.Tech CSE student at NIT Patna passionate about building 
+                    intelligent, scalable systems at the intersection of full-stack 
+                    development and GenAI.
+                    <br /><br />
+                    I actively practice DSA on multiple platforms to improve algorithmic 
+                    thinking, problem-solving speed, and contest strategy.
                   </p>
+
                   <Button variation="primary">
                     <Link href="/about">Learn More</Link>
                   </Button>
                 </motion.div>
 
+                {/* RIGHT IMAGE */}
                 <motion.div
                   initial={{ x: 100, opacity: 0 }}
                   whileInView={{ x: 0, opacity: 1 }}
                   transition={{ ...sectionTransition, delay: 0.2 }}
-                  className="relative w-4/5 md:w-1/3 h-[400px] md:h-[600px] mt-10 md:mt-0 rounded-xl overflow-hidden grayscale hover:grayscale-0"
+                  className="relative w-4/5 md:w-1/3"
                 >
-                  <Image
-                    src={MeAbout}
-                    layout="fill"
-                    objectFit="cover"
-                    alt="Suprit Raj About"
-                    placeholder="blur"
-                  />
+                  <div className="rounded-xl overflow-hidden grayscale hover:grayscale-0 transition-all shadow-2xl">
+                    <Image
+                      src={MeAbout}
+                      layout="responsive"
+                      alt="Suprit Raj"
+                      placeholder="blur"
+                      objectFit="cover"
+                    />
+                  </div>
                 </motion.div>
+
+              </div>
+
+              {/* ========================= CP CARDS ========================= */}
+              <div className="mt-20 md:mt-24 w-full max-w-6xl mb-10">
+
+                <h2 className="text-3xl md:text-4xl font-bold text-black mb-10 text-center md:text-left">
+                  Competitive Programming Profiles
+                </h2>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pb-10">
+
+                  {/* Card Component */}
+                  {[
+                    {
+                      title: "LeetCode",
+                      rating: "1650",
+                      link: "https://leetcode.com/your_username/",
+                      color: "text-yellow-600",
+                    },
+                    {
+                      title: "CodeChef",
+                      rating: "1700",
+                      link: "https://www.codechef.com/users/your_username",
+                      color: "text-orange-600",
+                    },
+                    {
+                      title: "Codeforces",
+                      rating: "1300",
+                      link: "https://codeforces.com/profile/your_username",
+                      color: "text-blue-600",
+                    },
+                  ].map((item, i) => (
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.45, delay: i * 0.1 }}
+                      className="bg-white p-7 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl transition-all"
+                    >
+                      <h3 className="text-2xl font-bold text-gray-900">{item.title}</h3>
+                      <p className="text-gray-600 mt-2 text-lg">
+                        Max Rating: <span className="font-semibold">{item.rating}</span>
+                      </p>
+                      <a
+                        href={item.link}
+                        className={`${item.color} underline mt-3 inline-block font-medium`}
+                        target="_blank"
+                      >
+                        View Profile →
+                      </a>
+                    </motion.div>
+                  ))}
+                </div>
               </div>
             </section>
+
 
             {/* ========================= PROJECTS ========================= */}
             <section
@@ -187,16 +250,16 @@ export default function MyPage() {
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
                     {[
                       {
-                        title: "Supplier Lens",
-                        subtitle: "AI-Powered Supplier Risk Detector",
-                        tech: "Next.js • FastAPI • LangGraph • GPT-4o • Pinecone • PostgreSQL",
-                        link: "https://supplier-risk-detector2.vercel.app/",
+                        title: "Smart Meet",
+                        subtitle: "AI-powered meeting platform with real-time transcription, automated summaries, and intelligent action item extraction.",
+                        tech: "Next.js • TypeScript • OpenAI • Drizzle ORM • PostgreSQL",
+                        link: "https://smart-meet-eight.vercel.app/",
                       },
                       {
                         title: "Vitamap",
                         subtitle: "Pharmacy App",
                         tech: "Next.js • TypeScript • FastAPI • Prisma • PostgreSQL • Leaflet",
-                        link: "https://vitamap-kappa.vercel.app/",
+                        link: "https://vitamap-tqpy.vercel.app/",
                       },
                       {
                         title: "BookNest",
@@ -291,8 +354,8 @@ export default function MyPage() {
                     <SocialIcon href="mailto:supritr.ug23.cs@nitp.ac.in" icon={faEnvelope} />
                     <SocialIcon href="https://github.com/supritR21" icon={faGithub} />
                     <SocialIcon href="https://www.linkedin.com/in/suprit-raj-04b45932b/" icon={faLinkedin} />
-                    <SocialIcon href="https://thriving-concha-3ebc04.netlify.app/" icon={faInstagram} />
-                    <SocialIcon href="https://discordapp.com/users/" icon={faDiscord} />
+                    <SocialIcon href="#" icon={faInstagram} />
+                    <SocialIcon href="https://discord.com/users/1357408252647969121" icon={faDiscord} />
                   </div>
                 </motion.div>
               </div>
@@ -318,3 +381,94 @@ function SocialIcon({ href, icon }) {
     </a>
   );
 }
+
+import { useEffect } from "react";
+import { AnimatePresence } from "framer-motion";
+
+function RotatingCards() {
+  const cards = [
+    {
+      platform: "LeetCode",
+      rating: "Max Rating: 1694",
+      link: "https://leetcode.com/u/Suprit_Raj/",
+    },
+    {
+      platform: "CodeChef",
+      rating: "Max Rating: 1323",
+      link: "https://www.codechef.com/users/suprit_r21",
+    },
+    {
+      platform: "Codeforces",
+      rating: "Max Rating: Unrated",
+      link: "https://codeforces.com/profile/supritr21",
+    },
+  ];
+
+  const [index, setIndex] = useState(0);
+
+  // Smooth auto rotate every 2.2 seconds
+  useEffect(() => {
+    const interval = setInterval(
+      () => setIndex((prev) => (prev + 1) % cards.length),
+      2200
+    );
+    return () => clearInterval(interval);
+  }, []);
+
+  const prevCard = () =>
+    setIndex((prev) => (prev - 1 + cards.length) % cards.length);
+
+  const nextCard = () => setIndex((prev) => (prev + 1) % cards.length);
+
+  return (
+    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-[90%] flex justify-center items-center gap-3">
+
+      {/* LEFT ARROW */}
+      <button
+        onClick={prevCard}
+        className="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-md hover:bg-gray-200 transition"
+      >
+        <span className="text-2xl font-bold">‹</span>
+      </button>
+
+      {/* CARD SLIDER */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, x: 80 }}      // comes from right
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -80 }}        // exits to left
+          transition={{ duration: 0.6 }}       // smoother animation
+          className="bg-white bg-opacity-90 backdrop-blur-lg shadow-xl rounded-xl p-5 text-center border border-gray-200 w-full"
+        >
+          <h3 className="text-xl font-semibold text-black">
+            {cards[index].platform}
+          </h3>
+
+          <p className="text-gray-700 mt-1">
+            {cards[index].rating}
+          </p>
+
+          <a
+            href={cards[index].link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 underline mt-2 inline-block"
+          >
+            View Profile
+          </a>
+        </motion.div>
+      </AnimatePresence>
+
+      {/* RIGHT ARROW */}
+      <button
+        onClick={nextCard}
+        className="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-md hover:bg-gray-200 transition"
+      >
+        <span className="text-2xl font-bold">›</span>
+      </button>
+
+    </div>
+  );
+}
+

@@ -5,8 +5,8 @@ import { motion } from "framer-motion";
 import jsonData from "@/json/data.json";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import {
-  faGithub,
   faArrowUpRightFromSquare,
   faChevronLeft,
   faChevronDown,
@@ -200,9 +200,8 @@ export default function Page(props) {
               blurDataURL={BlurImage.src}
               width={1920}
               height={1080}
-              layout="responsive"
-              objectFit="contain"
-              className="rounded-lg shadow-md border border-gray-200 hover:scale-[1.01] transition-transform duration-300"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+              className="rounded-lg shadow-md border border-gray-200 hover:scale-[1.01] transition-transform duration-300 w-full h-auto object-contain"
             />
           ))}
         </div>

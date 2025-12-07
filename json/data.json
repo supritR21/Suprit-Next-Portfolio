@@ -1,133 +1,45 @@
 {
   "Projects": [
+      {
+        "title": "Supplier Risk Detector",
+        "description": "AI-powered supply chain risk assessment platform for Walmart Hackathon 2025 with geospatial analytics.",
+        "github": "https://github.com/supritR21/Supplier-Risk-Detector2.git",
+        "category": [1],
+        "show": true,
+        "tech": ["Next.js", "FastAPI", "LangGraph", "PostgreSQL", "OpenAI"]
+    },
     {
-      "title": "Portfolio Website",
-      "description": "A modern portfolio website built with Next.js, TailwindCSS, and Framer Motion.",
-      "github": "https://github.com/supritR21/Portfolio-Website",
+      "title": "VitaMap",
+      "description": "Medicine availability finder app with pharmacy inventory management, interactive maps, and AI chatbot.",
+      "github": "https://github.com/akasr/vitamap",
       "category": [1],
       "show": true,
-      "tech": ["Next.js", "TailwindCSS", "Framer Motion"]
+      "tech": ["Next.js", "React", "Leaflet", "PostgreSQL", "OpenAI"]
     },
     {
-      "title": "Gym Website",
-      "description": "A responsive gym landing page built with HTML, CSS, and JavaScript.",
-      "github": "https://github.com/supritR21/Gym-Website",
+      "title": "BookNest",
+      "description": "Full-stack E-Library Management System with book borrowing, PYQ repository, and admin dashboard using JWT authentication.",
+      "github": "https://github.com/supritR21/BookNest",
       "category": [1],
       "show": true,
-      "tech": ["HTML", "CSS", "JavaScript"]
+      "tech": ["React", "Node.js", "Express", "MongoDB", "JWT"]
+    },
+    
+    {
+        "title": "Mumbai House Price Prediction",
+        "description": "ML-based web app to predict residential property prices in Mumbai using Ridge Regression with interactive Streamlit interface.",
+        "github": "https://github.com/supritR21/House-Prediction-ML-Simple-",
+        "category": [2],
+        "show": true,
+        "tech": ["Python", "Streamlit", "scikit-learn", "Ridge Regression", "pandas"]
     },
     {
-      "title": "Weather App",
-      "description": "Real-time weather forecasting app using OpenWeather API.",
-      "github": "https://github.com/supritR21/Weather-App",
-      "category": [1],
-      "show": true,
-      "tech": ["HTML", "CSS", "JavaScript", "API"]
-    },
-    {
-      "title": "Todo App",
-      "description": "A clean and simple todo management web application.",
-      "github": "https://github.com/supritR21/Todo-App",
-      "category": [1],
-      "show": true,
-      "tech": ["React", "CSS"]
-    },
-    {
-      "title": "QR Code Generator",
-      "description": "Generate QR codes instantly from any text or URL.",
-      "github": "https://github.com/supritR21/QR-Code-Generator",
-      "category": [1],
-      "show": true,
-      "tech": ["JavaScript", "HTML", "CSS"]
-    },
-    {
-      "title": "Notes App",
-      "description": "A simple notes app with auto-save and local storage support.",
-      "github": "https://github.com/supritR21/Notes-App",
-      "category": [1],
-      "show": true,
-      "tech": ["JavaScript", "LocalStorage"]
-    },
-    {
-      "title": "Expense Tracker",
-      "description": "Track daily expenses with dynamic chart visualization.",
-      "github": "https://github.com/supritR21/Expense-Tracker",
-      "category": [1],
-      "show": true,
-      "tech": ["JavaScript", "LocalStorage", "CSS"]
-    },
-    {
-      "title": "Snake Game",
-      "description": "Classic snake game built using JavaScript and Canvas.",
-      "github": "https://github.com/supritR21/Snake-Game",
-      "category": [1],
-      "show": true,
-      "tech": ["JavaScript", "Canvas"]
-    },
-
-    {
-      "title": "Chess AI",
-      "description": "A chess engine built using Minimax and Alpha-Beta pruning.",
-      "github": "https://github.com/supritR21/Chess-AI",
+      "title": "Stock Price Prediction",
+      "description": "ML-based stock price forecasting for MNCs with 30-day predictions using TensorFlow and Streamlit interface.",
+      "github": "https://github.com/supritR21/Stock-Price-Prediction-Using-Machine-Learning",
       "category": [2],
       "show": true,
-      "tech": ["Python", "Minimax", "AI"]
-    },
-    {
-      "title": "Sudoku Solver",
-      "description": "AI-powered Sudoku solver using backtracking and heuristics.",
-      "github": "https://github.com/supritR21/Sudoku-Solver",
-      "category": [2],
-      "show": true,
-      "tech": ["Python", "AI", "Backtracking"]
-    },
-    {
-      "title": "Machine Learning Models",
-      "description": "Collection of ML models such as regression, classification, clustering.",
-      "github": "https://github.com/supritR21/Machine-Learning-Models",
-      "category": [2],
-      "show": true,
-      "tech": ["Python", "Scikit-Learn", "Pandas"]
-    },
-    {
-      "title": "Neural Networks",
-      "description": "Custom-built neural networks from scratch using NumPy.",
-      "github": "https://github.com/supritR21/Neural-Networks",
-      "category": [2],
-      "show": true,
-      "tech": ["Python", "NumPy", "Deep Learning"]
-    },
-    {
-      "title": "Image Classifier",
-      "description": "CNN-based image classification trained on custom datasets.",
-      "github": "https://github.com/supritR21/Image-Classifier",
-      "category": [2],
-      "show": true,
-      "tech": ["Python", "TensorFlow", "CNN"]
-    },
-    {
-      "title": "Spam Detector",
-      "description": "NLP-based spam detection using Naive Bayes and TF-IDF.",
-      "github": "https://github.com/supritR21/Spam-Detector",
-      "category": [2],
-      "show": true,
-      "tech": ["Python", "NLP", "Scikit-Learn"]
-    },
-    {
-      "title": "Stock Prediction",
-      "description": "LSTM-based deep learning model for stock price forecasting.",
-      "github": "https://github.com/supritR21/Stock-Prediction",
-      "category": [2],
-      "show": true,
-      "tech": ["Python", "LSTM", "TensorFlow"]
-    },
-    {
-      "title": "Movie Recommendation System",
-      "description": "Hybrid collaborative + content-based movie recommendation engine.",
-      "github": "https://github.com/supritR21/Movie-Recommendation-System",
-      "category": [2],
-      "show": true,
-      "tech": ["Python", "Recommender Systems"]
+      "tech": ["Python", "TensorFlow", "Streamlit", "Machine Learning"]
     }
   ]
 }
