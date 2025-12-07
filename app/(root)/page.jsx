@@ -188,20 +188,20 @@ export default function MyPage() {
                   {[
                     {
                       title: "LeetCode",
-                      rating: "1650",
-                      link: "https://leetcode.com/your_username/",
+                      rating: "1694",
+                      link: "https://leetcode.com/u/Suprit_Raj/",
                       color: "text-yellow-600",
                     },
                     {
                       title: "CodeChef",
-                      rating: "1700",
-                      link: "https://www.codechef.com/users/your_username",
+                      rating: "1323",
+                      link: "https://www.codechef.com/users/suprit_r21",
                       color: "text-orange-600",
                     },
                     {
                       title: "Codeforces",
-                      rating: "1300",
-                      link: "https://codeforces.com/profile/your_username",
+                      rating: "Unrated",
+                      link: "https://codeforces.com/profile/supritr21",
                       color: "text-blue-600",
                     },
                   ].map((item, i) => (

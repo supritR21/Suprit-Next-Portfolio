@@ -19,7 +19,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 
 // Replace with your own images
-import Me4 from "@/public/image/me4.jpeg";
+import Me4 from "@/public/image/me4.jpg";
 import Me5 from "@/public/image/me5.jpg";
 import Me6 from "@/public/image/me6.jpg";
 
