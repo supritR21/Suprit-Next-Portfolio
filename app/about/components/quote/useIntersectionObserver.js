@@ -1,3 +1,5 @@
+// app/about/components/quote/useIntersectionObserver.js
+
 // useIntersectionObserver.js
 import { useEffect, useState, useRef } from "react";
 

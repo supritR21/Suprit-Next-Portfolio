@@ -25,25 +25,28 @@ export default function Sidebar({ activeSection }) {
   ];
 
   return (
-    <div className="hidden md:flex fixed z-40 left-0 top-1/4 bg-gray-900/90 h-[55vh] w-16 flex-col justify-between items-center p-4 rounded-e-3xl shadow-xl border border-gray-700">
-      <ul className="flex flex-col justify-evenly items-center h-full space-y-2 text-gray-300">
-        {menuItems.map((item) => (
-          <li key={item.id}>
-            <button
-              onClick={() => handleMoveToSection(item.id)}
-              className={`group relative flex items-center justify-center w-10 h-10 rounded-full transition-all duration-300
-                ${
-                  activeSection === item.id
-                    ? "bg-blue-500 text-white shadow-lg scale-110"
-                    : "hover:bg-gray-700 hover:text-white"
-                }
-              `}
-            >
-              <FontAwesomeIcon icon={item.icon} className="text-lg" />
-            </button>
-          </li>
-        ))}
-      </ul>
+    <div className="hidden md:flex fixed z-40 left-0 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur-md border border-slate-200 shadow-lg h-auto w-14 flex-col justify-center items-center py-5 rounded-r-2xl gap-1">
+      {menuItems.map((item) => (
+        <div key={item.id} className="group relative flex items-center">
+          <button
+            onClick={() => handleMoveToSection(item.id)}
+            title={item.label}
+            className={`flex items-center justify-center w-9 h-9 rounded-xl transition-all duration-200 my-0.5
+              ${
+                activeSection === item.id
+                  ? "bg-blue-600 text-white shadow-md shadow-blue-200"
+                  : "text-slate-400 hover:bg-slate-100 hover:text-slate-700"
+              }
+            `}
+          >
+            <FontAwesomeIcon icon={item.icon} className="text-sm" />
+          </button>
+          {/* Tooltip */}
+          <span className="absolute left-12 px-2.5 py-1 rounded-lg bg-slate-800 text-white text-xs font-medium whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-150 pointer-events-none shadow-lg">
+            {item.label}
+          </span>
+        </div>
+      ))}
     </div>
   );
 }

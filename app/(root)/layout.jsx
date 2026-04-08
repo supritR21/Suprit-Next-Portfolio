@@ -1,3 +1,5 @@
+// app/(root)/layout.jsx
+
 "use client"
 import Sidebar from "@/components/Sidebar";
 

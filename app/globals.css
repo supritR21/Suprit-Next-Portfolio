@@ -1,102 +1,142 @@
-/* font */
-
-@import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+/* ─── Fonts ───────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap');
 
 @import "tailwindcss";
 
+/* ─── Base Scale ──────────────────────────────────────────────── */
 html {
-	font-size: 17px !important;
+  font-size: 16px !important;
 }
 
 @media (max-width: 1268px) {
-	html {
-		font-size: 14px !important;
-	}
+  html {
+    font-size: 15px !important;
+  }
 }
 
 @media (max-width: 768px) {
-	html {
-		font-size: 13px !important;
-	}
+  html {
+    font-size: 14px !important;
+  }
 }
 
+/* ─── Base ────────────────────────────────────────────────────── */
 body {
-	font-family: 'Poppins', sans-serif !important;
-	color: black;
-	background-color: rgb(230, 230, 230);
+  font-family: 'DM Sans', sans-serif !important;
+  color: #0f172a;          /* slate-900 */
+  background-color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4, h5, h6 {
-	font-family: 'Jost', sans-serif !important;
+h1, h2, h3, h4, h5, h6, .title {
+  font-family: 'Sora', sans-serif !important;
 }
 
-.title {
-	font-family: 'Jost', sans-serif !important;
+span {
+  font-family: 'DM Sans', sans-serif;
 }
 
+/* ─── FullPage.js ─────────────────────────────────────────────── */
 .section {
-	height: 100vh;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-.navbar {
-	z-index: 49 !important;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .fp-watermark {
-	display: none !important;
+  display: none !important;
 }
 
-
-/* h2, h3, h4, h5, h6 {
-	@apply text-gray-600;
-} */
-
-span {
-	font-family: "Jost", sans-serif;
+/* ─── Navbar z-index (keep as-is) ────────────────────────────── */
+.navbar {
+  z-index: 49 !important;
 }
 
+/* ─── Nav active underline ────────────────────────────────────── */
 li {
-	@apply list-none relative;
+  @apply list-none relative;
 }
 
 li.active:after {
-	content: "";
-	position: absolute;
-	bottom: -5px;
-	left: 0;
-	width: 100%;
-	height: 2px;
-	background-color: #ffffff;
-
-
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #2563eb;   /* blue-600 — matches new accent */
 }
 
+/* ─── Table defaults ──────────────────────────────────────────── */
 td, th {
-	@apply py-2 px-3;
+  @apply py-2 px-3;
 }
 
-
+/* ─── Anchor tooltip ──────────────────────────────────────────── */
 a[title]:hover:after {
-	margin-left: -100px;
-	margin-top: -50px;
-	position: absolute;
-	content: attr(title);
-	padding: 0.5rem;
-	white-space: nowrap;
-	z-index: 1;
-	background-color: #333333;
-	color: #fff;
-	border-radius: 4px;
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-	font-size: 0.8rem;
-
+  margin-left: -100px;
+  margin-top: -50px;
+  position: absolute;
+  content: attr(title);
+  padding: 0.4rem 0.65rem;
+  white-space: nowrap;
+  z-index: 1;
+  background-color: #1e293b;   /* slate-800 */
+  color: #f8fafc;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  font-size: 0.75rem;
+  font-family: 'DM Sans', sans-serif;
 }
 
+/* ─── Text selection ──────────────────────────────────────────── */
 ::selection {
-	background: #333333;
-	color: #fff;
+  background: #2563eb;         /* blue-600 */
+  color: #ffffff;
+}
+
+/* Make FullPage.js sections transparent so the fixed background shows through */
+#fullpage,
+.fp-section {
+  background: transparent !important;
+}
+
+/* ─── REMOVE SCROLL BARS & HORIZONTAL OVERFLOW (Home + About) ─── */
+/* Prevent any horizontal scroll on entire page */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+}
+
+/* Smooth scrolling for anchor links (works alongside fullpage.js) */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hide scrollbars inside fullpage.js sections that might appear from scrollOverflow */
+.fp-scrollable .fp-scroller::-webkit-scrollbar {
+  display: none;
+}
+.fp-scrollable .fp-scroller {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Force sections to never overflow horizontally */
+.section {
+  overflow-x: hidden !important;
+}
+
+/* Ensure all internal containers respect horizontal boundaries */
+.section > div {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Optional: remove vertical scrollbar from About section if content still overflows */
+.fp-section[data-anchor="about-section"] {
+  overflow-y: hidden !important;
 }

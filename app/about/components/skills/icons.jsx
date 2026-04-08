@@ -1,3 +1,5 @@
+// app/about/components/skills/icons.jsx
+
 function ActivityIcon(props) {
 	return (
 		<svg

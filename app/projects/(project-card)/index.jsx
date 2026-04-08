@@ -5,114 +5,81 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import PropTypes from "prop-types";
 import BlurImage from "@/public/image/placeholder/blur.jpg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
+
+const glass = {
+  background: "rgba(255,255,255,0.55)",
+  backdropFilter: "blur(20px)",
+  WebkitBackdropFilter: "blur(20px)",
+  border: "1px solid rgba(255,255,255,0.75)",
+  boxShadow: "0 4px 24px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.9)",
+};
+
+const categoryGradients = {
+  1: "linear-gradient(135deg, #6366f1, #8b5cf6)",
+  2: "linear-gradient(135deg, #06b6d4, #3b82f6)",
+};
 
 export default function ProjectCard({ project, index, activeCategory }) {
   const isVisible = project.category.includes(parseInt(activeCategory));
-
   if (!isVisible) return null;
 
+  const desc = Array.isArray(project.desc) ? project.desc[0] : project.description || "";
+  const grad = categoryGradients[project.category?.[0]] || "linear-gradient(135deg, #64748b, #94a3b8)";
+
   return (
-    <Link href={`/projects/${project.slug}`} key={index}>
+    <Link href={`/projects/${project.slug}`}>
       <motion.div
-        className="
-          relative w-full aspect-video rounded-2xl overflow-hidden
-          bg-gray-200 shadow-lg group cursor-pointer
-          flex items-center justify-center
-        "
-        initial={{ opacity: 0, y: 60 }}
+        initial={{ opacity: 0, y: 36 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ type: "spring", damping: 20, stiffness: 120 }}
+        viewport={{ once: true }}
+        transition={{ type: "spring", stiffness: 90, damping: 18, delay: index * 0.06 }}
+        className="group relative rounded-2xl p-[1.5px] cursor-pointer h-full"
+        style={{ background: grad }}
       >
-        {/* Thumbnail */}
-        <Image
-          src={project.thumbnail}
-          alt={project.title}
-          placeholder="blur"
-          blurDataURL={BlurImage.src}
-          layout="fill"
-          objectFit="cover"
-          className="
-            transition-all duration-500
-            opacity-60 scale-105
-            group-hover:opacity-100 group-hover:scale-110
-          "
-        />
-
-        {/* Year Tag */}
-        <div
-          className="
-            absolute top-3 left-3
-            bg-black/60 backdrop-blur-md
-            text-white px-3 py-1
-            rounded-md text-sm font-medium
-          "
-        >
-          {project.year}
-        </div>
-
-        {/* Overlay Content */}
-        <div
-          className="
-            absolute inset-0 flex flex-col items-center justify-center text-center
-            px-6 transition-all duration-500 z-10
-            opacity-100 group-hover:opacity-0
-          "
-        >
-          <h1 className="text-3xl font-bold text-white drop-shadow-md mb-3">
-            {project.title}
-          </h1>
-
-          <p className="text-white/90 max-w-lg leading-relaxed">
-            {project.desc[0].length > 130
-              ? `${project.desc[0].slice(0, 130)}...`
-              : project.desc[0]}
-          </p>
-
-          {/* Tech Stack */}
-          <div className="flex flex-row flex-wrap justify-center items-center mt-5 gap-2">
-            {project.tech.map((t, i) => (
-              <span
-                key={i}
-                className="
-                  px-3 py-1 bg-white/20 backdrop-blur-md text-white 
-                  rounded-full text-sm border border-white/30
-                "
-              >
-                {t}
-              </span>
-            ))}
+        <div className="rounded-[14px] overflow-hidden h-full flex flex-col" style={glass}>
+          {/* Thumbnail */}
+          <div className="relative w-full aspect-video overflow-hidden">
+            <Image
+              src={project.thumbnail}
+              alt={project.title}
+              fill
+              className="object-cover grayscale group-hover:grayscale-0 scale-105 group-hover:scale-110 transition-all duration-700 ease-out"
+              placeholder="blur"
+              blurDataURL={BlurImage.src}
+            />
+            <div
+              className="absolute inset-0"
+              style={{ background: "linear-gradient(to top, rgba(15,23,42,0.6) 0%, transparent 60%)" }}
+            />
+            <div
+              className="absolute top-3 left-3 text-[0.65rem] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full"
+              style={{ background: "rgba(255,255,255,0.88)", backdropFilter: "blur(10px)", WebkitBackdropFilter: "blur(10px)", color: "#0f172a" }}
+            >
+              {project.year}
+            </div>
           </div>
-        </div>
 
-        {/* Hover Reveal Content */}
-        <div
-          className="
-            absolute inset-0 opacity-0 group-hover:opacity-100
-            transition-all duration-500 p-6
-            flex flex-col justify-end bg-black/40 backdrop-blur-sm
-          "
-        >
-          <h2 className="text-2xl font-semibold text-white mb-2">
-            {project.title}
-          </h2>
-          <p className="text-white/90 mb-4">
-            {project.desc[0].length > 150
-              ? `${project.desc[0].slice(0, 150)}...`
-              : project.desc[0]}
-          </p>
-
-          <div className="flex flex-wrap gap-2">
-            {project.tech.map((t, i) => (
-              <span
-                key={i}
-                className="
-                  px-3 py-1 bg-white/20 text-white font-medium 
-                  text-sm rounded-full backdrop-blur-md border border-white/30
-                "
-              >
-                {t}
-              </span>
-            ))}
+          {/* Body */}
+          <div className="flex flex-col flex-1 p-5 gap-3">
+            <div className="flex items-start justify-between gap-2">
+              <h3 className="text-xl font-extrabold text-slate-900 leading-snug" style={{ fontFamily: "'Sora', sans-serif" }}>
+                {project.title}
+              </h3>
+              <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="text-[11px] text-slate-300 group-hover:text-blue-500 transition-colors shrink-0 mt-1" />
+            </div>
+            <p className="text-xs text-slate-500 leading-relaxed flex-1 line-clamp-3">
+              {desc.length > 140 ? `${desc.slice(0, 140)}…` : desc}
+            </p>
+            <div className="flex flex-wrap gap-1.5 pt-1">
+              {project.tech.map((t, i) => (
+                <span key={i} className="text-[10px] font-semibold text-slate-600 px-2 py-0.5 rounded-full"
+                  style={{ background: "rgba(255,255,255,0.72)", border: "1px solid rgba(203,213,225,0.55)" }}>
+                  {t}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </motion.div>

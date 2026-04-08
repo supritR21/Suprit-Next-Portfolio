@@ -4,12 +4,8 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // ✅ FORCE DISABLE TURBOPACK (CRITICAL FIX)
-  turbopack: false,
-
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
+  // Use Turbopack with webpack config support
+  turbopack: {},
 
   images: {
     remotePatterns: [

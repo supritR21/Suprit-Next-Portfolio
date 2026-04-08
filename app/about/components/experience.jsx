@@ -1,12 +1,35 @@
 "use client";
 
-// ---------------------------------------------------------------------
-// Professional Experience — Suprit Raj (NIT Patna)
-// ---------------------------------------------------------------------
-
-import Hr from "@/components/Hr";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import Hr from "@/components/Hr";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
+
+const ease = [0.16, 1, 0.3, 1];
+
+const gradientText = {
+  background: "linear-gradient(135deg, #0f172a 0%, #1d4ed8 55%, #60a5fa 100%)",
+  WebkitBackgroundClip: "text",
+  WebkitTextFillColor: "transparent",
+  backgroundClip: "text",
+};
+
+const glass = {
+  background: "rgba(255,255,255,0.52)",
+  backdropFilter: "blur(22px)",
+  WebkitBackdropFilter: "blur(22px)",
+  border: "1px solid rgba(255,255,255,0.72)",
+  boxShadow: "0 4px 24px rgba(0,0,0,0.055), inset 0 1px 0 rgba(255,255,255,0.9)",
+};
+
+const glassBold = {
+  background: "rgba(255,255,255,0.68)",
+  backdropFilter: "blur(32px)",
+  WebkitBackdropFilter: "blur(32px)",
+  border: "1px solid rgba(255,255,255,0.85)",
+  boxShadow: "0 8px 36px rgba(0,0,0,0.07), inset 0 1px 0 rgba(255,255,255,0.95)",
+};
 
 const experiences = [
   {
@@ -17,9 +40,9 @@ const experiences = [
     position: "Full Stack Developer",
     type: "Core Team Member",
     location: "Patna, India",
-    description:
-      "Contributing to HackSlash’s open-source and internal projects focused on web applications and AI-powered solutions. Collaborate in a team to build scalable systems using modern web technologies and ensure high performance across products.",
-    skills: ["Next.js", "React", "Node.js", "Express.js", "TailwindCSS", "Git", "Teamwork"],
+    accent: "from-violet-500 to-indigo-600",
+    description: "Contributing to HackSlash's open-source and internal projects focused on web applications and AI-powered solutions. Collaborate in a team to build scalable systems using modern web technologies.",
+    skills: ["Next.js", "React", "Node.js", "Express.js", "TailwindCSS", "Git"],
   },
   {
     id: 2,
@@ -29,8 +52,8 @@ const experiences = [
     position: "Web Developer",
     type: "Student Organization",
     location: "Patna, India",
-    description:
-      "Worked on the design and development of official club web portals. Implemented responsive interfaces, optimized UI/UX design, and introduced collaborative version control workflows within the team.",
+    accent: "from-blue-500 to-cyan-500",
+    description: "Worked on the design and development of official club web portals. Implemented responsive interfaces, optimized UI/UX design, and introduced collaborative version control workflows.",
     skills: ["React", "Next.js", "Figma", "GitHub", "UI/UX Design"],
   },
   {
@@ -41,8 +64,8 @@ const experiences = [
     position: "AI Developer & Consultant",
     type: "Freelance (Remote)",
     location: "Remote, India",
-    description:
-      "Delivered AI integration solutions for startups and student-led projects, specializing in RAG pipelines, LangChain workflows, and OpenAI/Gemini API integrations. Assisted teams in deploying scalable backend services with FastAPI and Next.js.",
+    accent: "from-emerald-500 to-teal-500",
+    description: "Delivered AI integration solutions for startups and student-led projects, specializing in RAG pipelines, LangChain workflows, and OpenAI/Gemini API integrations with FastAPI backends.",
     skills: ["FastAPI", "LangChain", "OpenAI API", "Gemini API", "Python", "Next.js"],
   },
   {
@@ -53,8 +76,8 @@ const experiences = [
     position: "Lead Developer",
     type: "Academic Project",
     location: "Patna, India",
-    description:
-      "Built an AI-powered supplier risk analysis system integrating GPT-4o with a LangGraph-based multi-agent pipeline. Designed a modern dashboard using Next.js and FastAPI backend for secure document parsing and evaluation.",
+    accent: "from-amber-500 to-orange-500",
+    description: "Built an AI-powered supplier risk analysis system integrating GPT-4o with a LangGraph-based multi-agent pipeline. Designed a modern dashboard using Next.js and FastAPI backend.",
     skills: ["Next.js", "FastAPI", "LangGraph", "OpenAI GPT-4o", "MongoDB", "TypeScript"],
   },
   {
@@ -65,8 +88,8 @@ const experiences = [
     position: "Full Stack Developer",
     type: "Independent Project",
     location: "Patna, India",
-    description:
-      "Developed a pharmacy web platform integrating OpenStreetMap APIs, Pinecone vector storage, and RAG search for intelligent medicine retrieval. Focused on backend scalability, database efficiency, and UI responsiveness.",
+    accent: "from-pink-500 to-rose-500",
+    description: "Developed a pharmacy web platform integrating OpenStreetMap APIs, Pinecone vector storage, and RAG search for intelligent medicine retrieval. Focused on backend scalability and UI responsiveness.",
     skills: ["Next.js", "FastAPI", "RAG", "Pinecone", "OpenStreetMap", "Python"],
   },
   {
@@ -77,220 +100,137 @@ const experiences = [
     position: "Full Stack Web Developer",
     type: "Freelance",
     location: "Remote, India",
-    description:
-      "Delivered several client-based web solutions using MERN and Next.js stacks. Worked closely with clients to define requirements, create wireframes, and deploy applications to production environments.",
-    skills: ["React", "Next.js", "MongoDB", "Node.js", "Express.js", "Git", "Docker"],
+    accent: "from-slate-500 to-slate-700",
+    description: "Delivered several client-based web solutions using MERN and Next.js stacks. Worked closely with clients to define requirements, create wireframes, and deploy applications to production.",
+    skills: ["React", "Next.js", "MongoDB", "Node.js", "Express.js", "Docker"],
   },
-];
-
-experiences.reverse();
-
-function Title() {
-  return (
-    <div className="mt-16 flex flex-col justify-start items-center w-full pl-10 md:pl-32">
-      <div className="flex justify-center items-center flex-col my-5 self-start">
-        <Hr variant="long" />
-        <motion.h1
-          className="text-3xl font-bold mt-3 text-gray-900"
-          initial={{ opacity: 0, x: -200 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.6, type: "spring" }}
-        >
-          Professional Experience
-        </motion.h1>
-      </div>
-    </div>
-  );
-}
-
-function TimelineCard({ experience, index, isEven }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: -20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.15, duration: 0.5 }}
-      className={`flex ps-10 md:ps-0 ${
-        isEven
-          ? "md:justify-center md:translate-x-68"
-          : "md:justify-center md:-translate-x-68"
-      } justify-center mb-4`}
-    >
-      <div className="bg-linear-to-r from-black to-gray-800 text-white px-12 py-3 rounded-xl shadow-lg border border-gray-600 min-w-max">
-        <div className="flex items-center justify-center gap-6">
-          <div className="text-center">
-            <div className="text-sm font-bold">{experience.startDate}</div>
-            <div className="text-xs text-gray-300">Start</div>
-          </div>
-          <div className="w-px h-8 bg-gray-500"></div>
-          <div className="text-center">
-            <div className="text-sm font-bold">{experience.endDate}</div>
-            <div className="text-xs text-gray-300">End</div>
-          </div>
-          <div className="w-px h-8 bg-gray-500"></div>
-          <div className="text-center">
-            <div className="text-sm font-medium text-gray-400">
-              {experience.location}
-            </div>
-            <div className="text-xs text-gray-300">Location</div>
-          </div>
-        </div>
-      </div>
-    </motion.div>
-  );
-}
-
-function ExperienceCard({ experience, index, isEven }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.2, duration: 0.6 }}
-      className={`relative group ${
-        isEven ? "md:ml-auto md:pl-12" : "md:mr-auto md:pr-12"
-      } md:w-1/2`}
-    >
-      <div
-        className={`bg-white/20 backdrop-blur-sm border border-gray-300/30 rounded-2xl p-6 shadow-lg 
-        hover:shadow-xl hover:bg-white/30 transition-all duration-300 ml-12 md:ml-0`}
-      >
-        {/* Company & Position */}
-        <div className="mb-4">
-          <h3 className="font-bold text-xl text-gray-900 mb-1">
-            {experience.company}
-          </h3>
-          <h4 className="font-medium text-lg text-gray-700">
-            {experience.position}
-            <span className="text-sm font-normal text-gray-500 ml-2">
-              • {experience.type}
-            </span>
-          </h4>
-        </div>
-
-        {/* Description */}
-        <p className="text-gray-600 text-justify leading-relaxed mb-4">
-          {experience.description}
-        </p>
-
-        {/* Skills */}
-        <div className="flex flex-wrap gap-2">
-          {experience.skills.map((skill, idx) => (
-            <span
-              key={idx}
-              className="bg-gray-200/60 hover:bg-gray-300/60 border border-gray-400/40 text-black px-3 py-1 rounded-full text-sm font-medium transition-all duration-300 backdrop-blur-sm hover:scale-105"
-            >
-              {skill}
-            </span>
-          ))}
-        </div>
-      </div>
-    </motion.div>
-  );
-}
-
-function Wrapper({ children }) {
-  return (
-    <div className="mx-auto container px-6 py-10">
-      <div className="flex justify-center items-center flex-col">{children}</div>
-    </div>
-  );
-}
+].reverse();
 
 export default function Experience() {
   const [showAll, setShowAll] = useState(false);
-  const displayedExperiences = showAll ? experiences : experiences.slice(0, 3);
+  const displayed = showAll ? experiences : experiences.slice(0, 3);
 
   return (
-    <>
-      <Title />
-      <Wrapper>
-        <div className="relative w-full max-w-6xl mx-auto">
-          {/* Timeline line */}
-          <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1 bg-linear-to-b from-black via-gray-400 to-transparent h-full"></div>
-          <div className="md:hidden absolute left-0 w-1 bg-linear-to-b from-black via-gray-400 to-transparent h-full"></div>
+    <section className="max-w-6xl mx-auto px-8 md:px-20 py-16">
 
-          {/* Experience cards */}
-          <div className="space-y-12 md:space-y-16 relative">
-            <AnimatePresence>
-              {displayedExperiences.map((experience, index) => (
-                <div key={experience.id} className="relative">
-                  <TimelineCard
-                    experience={experience}
-                    index={index}
-                    isEven={index % 2 === 1}
-                  />
-                  <div
-                    className={`absolute w-6 h-6 bg-black rounded-full border-4 border-white shadow-lg z-30
-                    md:left-1/2 md:-translate-x-1/2 md:top-4
-                    left-0 -translate-x-1/2 top-5`}
-                  />
-                  <ExperienceCard
-                    experience={experience}
-                    index={index}
-                    isEven={index % 2 === 1}
-                  />
-                </div>
-              ))}
-            </AnimatePresence>
-          </div>
+      <motion.p
+        initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }} transition={{ duration: 0.55, ease }}
+        className="text-xs font-bold tracking-[0.25em] uppercase text-slate-400 mb-2"
+      >
+        03 / Experience
+      </motion.p>
 
-          {/* Show more */}
-          {experiences.length > 3 && (
-            <motion.div
-              className="flex justify-center mt-12"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
-            >
-              <button
-                onClick={() => setShowAll(!showAll)}
-                className="bg-black hover:bg-gray-800 text-white px-8 py-3 rounded-full font-medium 
-                transition-all duration-300 hover:scale-105 shadow-lg flex items-center gap-2"
+      <motion.h2
+        initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }} transition={{ duration: 0.55, ease, delay: 0.06 }}
+        className="text-5xl md:text-6xl font-extrabold mb-2"
+        style={{ ...gradientText, fontFamily: "'Sora', sans-serif" }}
+      >
+        Experience
+      </motion.h2>
+
+      <motion.div
+        initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
+        viewport={{ once: true }} transition={{ delay: 0.08 }}
+        className="mb-12"
+      >
+        <Hr />
+      </motion.div>
+
+      {/* Timeline */}
+      <div className="relative">
+        {/* Vertical line */}
+        <div
+          className="absolute left-[19px] top-0 bottom-0 w-px"
+          style={{ background: "linear-gradient(to bottom, rgba(99,102,241,0.5), rgba(99,102,241,0.05))" }}
+        />
+
+        <div className="space-y-6">
+          <AnimatePresence>
+            {displayed.map((exp, i) => (
+              <motion.div
+                key={exp.id}
+                initial={{ opacity: 0, x: -24 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -24 }}
+                transition={{ duration: 0.5, ease, delay: i * 0.07 }}
+                className="relative pl-12"
               >
-                {showAll ? (
-                  <>
-                    Show Less
-                    <svg
-                      className="w-4 h-4 transform rotate-180"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M19 9l-7 7-7-7"
-                      />
-                    </svg>
-                  </>
-                ) : (
-                  <>
-                    View More Experience
-                    <svg
-                      className="w-4 h-4"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M19 9l-7 7-7-7"
-                      />
-                    </svg>
-                  </>
-                )}
-              </button>
-            </motion.div>
-          )}
+                {/* Dot */}
+                <div
+                  className="absolute left-0 top-6 w-10 h-10 rounded-xl flex items-center justify-center text-white text-xs font-bold shadow-md"
+                  style={{ background: `linear-gradient(135deg, ${exp.accent.replace("from-", "").replace(" to-", ", ")})`.replace(/\s/g, ""),
+                    background: `linear-gradient(135deg, var(--tw-gradient-from), var(--tw-gradient-to))` }}
+                >
+                  <div className={`w-10 h-10 rounded-xl bg-linear-to-br ${exp.accent} flex items-center justify-center shadow-md`}>
+                    <span className="text-[10px] font-extrabold text-white">{exp.startDate.split(" ")[1] || exp.startDate}</span>
+                  </div>
+                </div>
 
-          {/* Bottom gradient fade */}
-          {!showAll && (
-            <div className="absolute bottom-0 left-0 right-0 h-32 bg-linear-to-t from-gray-200 to-transparent pointer-events-none"></div>
-          )}
+                {/* Card */}
+                <div className="rounded-2xl p-6" style={glassBold}>
+                  <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-3">
+                    <div>
+                      <h3 className="text-xl font-extrabold text-slate-900" style={{ fontFamily: "'Sora', sans-serif" }}>
+                        {exp.company}
+                      </h3>
+                      <div className="flex items-center gap-2 flex-wrap mt-0.5">
+                        <span className="text-sm font-semibold text-slate-700">{exp.position}</span>
+                        <span
+                          className="text-[0.6rem] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full text-slate-500"
+                          style={{ background: "rgba(255,255,255,0.65)", border: "1px solid rgba(203,213,225,0.5)" }}
+                        >
+                          {exp.type}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="text-right shrink-0">
+                      <p className="text-xs font-bold text-slate-500">{exp.startDate} — {exp.endDate}</p>
+                      <p className="text-xs text-slate-400 mt-0.5">{exp.location}</p>
+                    </div>
+                  </div>
+
+                  <p className="text-sm text-slate-600 leading-relaxed mb-4">{exp.description}</p>
+
+                  <div className="flex flex-wrap gap-1.5">
+                    {exp.skills.map((s) => (
+                      <span key={s} className="text-[11px] font-semibold text-slate-600 px-2.5 py-0.5 rounded-full"
+                        style={{ background: "rgba(255,255,255,0.72)", border: "1px solid rgba(203,213,225,0.55)" }}>
+                        {s}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
         </div>
-      </Wrapper>
-    </>
+
+        {/* Bottom fade */}
+        {!showAll && (
+          <div className="absolute bottom-0 left-0 right-0 h-28 pointer-events-none"
+            style={{ background: "linear-gradient(to top, rgba(238,242,255,0.9), transparent)" }} />
+        )}
+      </div>
+
+      {/* Show more/less */}
+      {experiences.length > 3 && (
+        <motion.div
+          initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
+          viewport={{ once: true }} transition={{ delay: 0.3 }}
+          className="flex justify-center mt-8"
+        >
+          <button
+            onClick={() => setShowAll(!showAll)}
+            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-bold text-slate-700 hover:text-white hover:bg-slate-900 transition-all duration-200"
+            style={glass}
+          >
+            {showAll ? "Show Less ↑" : `View ${experiences.length - 3} More ↓`}
+          </button>
+        </motion.div>
+      )}
+
+    </section>
   );
 }
