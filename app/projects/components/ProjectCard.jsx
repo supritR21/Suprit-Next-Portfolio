@@ -1,133 +1,167 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import PropTypes from "prop-types";
-import BlurImage from "@/public/image/placeholder/blur.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowUpRightFromSquare,
+} from "@fortawesome/free-solid-svg-icons";
 
-const glass = {
-  background: "rgba(255,255,255,0.55)",
-  backdropFilter: "blur(20px)",
-  WebkitBackdropFilter: "blur(20px)",
-  border: "1px solid rgba(255,255,255,0.75)",
-  boxShadow: "0 4px 24px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.9)",
+const categoryThemes = {
+  1: {
+    label: "WEB DEV",
+    pill: "bg-blue-600/90",
+    border: "rgba(59,130,246,.25)",
+    gradient:
+      "linear-gradient(135deg,#eff6ff 0%,#dbeafe 40%,#e0e7ff 100%)",
+    orb: "rgba(59,130,246,.25)",
+  },
+
+  2: {
+    label: "AI / ML",
+    pill: "bg-violet-600/90",
+    border: "rgba(168,85,247,.25)",
+    gradient:
+      "linear-gradient(135deg,#faf5ff 0%,#ede9fe 45%,#f5f3ff 100%)",
+    orb: "rgba(168,85,247,.25)",
+  },
 };
 
-// Per-category gradient borders
-const categoryGradients = {
-  1: "linear-gradient(135deg, #6366f1, #8b5cf6, #a78bfa)", // Web Dev — violet
-  2: "linear-gradient(135deg, #06b6d4, #3b82f6, #6366f1)", // AI/ML — cyan-blue
-};
-
-export default function ProjectCard({ project, index, activeCategory }) {
-  const isVisible =
+export default function ProjectCard({
+  project,
+  index,
+  activeCategory,
+}) {
+  const visible =
     activeCategory === "all" ||
-    project.category.includes(parseInt(activeCategory));
+    project.category.includes(Number(activeCategory));
 
-  if (!isVisible) return null;
+  if (!visible) return null;
 
-  const desc = Array.isArray(project.desc)
-    ? project.desc[0]
-    : project.description || "";
+  const theme =
+    categoryThemes[project.category?.[0]] ||
+    categoryThemes[1];
 
-  const grad =
-    categoryGradients[project.category?.[0]] ||
-    "linear-gradient(135deg, #64748b, #94a3b8)";
+  const desc =
+    project.description?.trim() ||
+    "A modern software project focused on performance, scalability and developer experience.";
 
   return (
-    <Link href={`/projects/${project.slug || ""}`}>
+    <Link
+      href={project.github || "#"}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="block h-full"
+    >
       <motion.div
-        initial={{ opacity: 0, y: 36 }}
+        initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ type: "spring", stiffness: 90, damping: 18, delay: index * 0.06 }}
-        className="group relative rounded-2xl p-[1.5px] cursor-pointer h-full"
-        style={{ background: grad }}
+        transition={{
+          duration: 0.45,
+          delay: index * 0.04,
+        }}
+        className="group h-full"
       >
         <div
-          className="rounded-[14px] overflow-hidden h-full flex flex-col"
-          style={glass}
+          className="relative overflow-hidden rounded-3xl border h-full flex flex-col transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl"
+          style={{
+            borderColor: theme.border,
+            background: "rgba(255,255,255,.72)",
+            backdropFilter: "blur(20px)",
+          }}
         >
-          {/* Thumbnail */}
-          <div className="relative w-full aspect-video overflow-hidden">
-            <Image
-              src={project.thumbnail || BlurImage}
-              alt={project.title}
-              fill
-              className="object-cover grayscale group-hover:grayscale-0 scale-105 group-hover:scale-110 transition-all duration-700 ease-out"
-              placeholder="blur"
-              blurDataURL={BlurImage.src}
-            />
-            {/* Gradient overlay */}
+          {/* HERO AREA */}
+          <div
+            className="relative h-52 overflow-hidden"
+            style={{
+              background: theme.gradient,
+            }}
+          >
+            {/* Orb 1 */}
             <div
-              className="absolute inset-0 transition-opacity duration-500"
-              style={{ background: "linear-gradient(to top, rgba(15,23,42,0.65) 0%, rgba(15,23,42,0.1) 60%, transparent 100%)" }}
-            />
-            {/* Year pill */}
-            <div
-              className="absolute top-3 left-3 text-[0.65rem] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full"
+              className="absolute -top-16 -left-10 w-40 h-40 rounded-full blur-3xl"
               style={{
-                background: "rgba(255,255,255,0.88)",
-                backdropFilter: "blur(10px)",
-                WebkitBackdropFilter: "blur(10px)",
-                color: "#0f172a",
+                background: theme.orb,
               }}
-            >
-              {project.year || "2025"}
-            </div>
-            {/* Category pill */}
-            {project.category?.[0] && (
-              <div
-                className="absolute top-3 right-3 text-[0.65rem] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full text-white"
-                style={{
-                  background: project.category[0] === 2
-                    ? "rgba(6,182,212,0.75)"
-                    : "rgba(99,102,241,0.75)",
-                  backdropFilter: "blur(10px)",
-                  WebkitBackdropFilter: "blur(10px)",
-                }}
-              >
-                {project.category[0] === 2 ? "AI / ML" : "Web Dev"}
-              </div>
-            )}
-          </div>
+            />
 
-          {/* Card body */}
-          <div className="flex flex-col flex-1 p-5 gap-3">
-            <div className="flex items-start justify-between gap-2">
+            {/* Orb 2 */}
+            <div
+              className="absolute bottom-0 right-0 w-48 h-48 rounded-full blur-3xl"
+              style={{
+                background: theme.orb,
+              }}
+            />
+
+            {/* Grid pattern */}
+            <div
+              className="absolute inset-0 opacity-[0.04]"
+              style={{
+                backgroundImage:
+                  "linear-gradient(#000 1px, transparent 1px),linear-gradient(90deg,#000 1px, transparent 1px)",
+                backgroundSize: "32px 32px",
+              }}
+            />
+
+            <div className="absolute top-4 left-4">
+              <span className="bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-slate-800">
+                {project.year || "2025"}
+              </span>
+            </div>
+
+            <div className="absolute top-4 right-4">
+              <span
+                className={`text-white text-[11px] px-3 py-1 rounded-full font-bold tracking-wide ${theme.pill}`}
+              >
+                {theme.label}
+              </span>
+            </div>
+
+            {/* Project Name Inside Hero */}
+            <div className="absolute bottom-6 left-6 right-6">
               <h3
-                className="text-xl font-extrabold text-slate-900 leading-snug"
-                style={{ fontFamily: "'Sora', sans-serif" }}
+                className="text-3xl font-extrabold text-slate-900 leading-tight"
+                style={{
+                  fontFamily: "'Sora', sans-serif",
+                }}
               >
                 {project.title}
               </h3>
-              <FontAwesomeIcon
-                icon={faArrowUpRightFromSquare}
-                className="text-[11px] text-slate-300 group-hover:text-blue-500 transition-colors shrink-0 mt-1"
-              />
             </div>
+          </div>
 
-            <p className="text-xs text-slate-500 leading-relaxed flex-1 line-clamp-3">
-              {desc.length > 140 ? `${desc.slice(0, 140)}…` : desc}
+          {/* CONTENT */}
+          <div className="flex flex-col flex-1 p-6">
+            <p className="text-sm text-slate-600 leading-7 flex-1">
+              {desc.length > 180
+                ? desc.substring(0, 180) + "..."
+                : desc}
             </p>
 
-            {/* Tech badges */}
-            <div className="flex flex-wrap gap-1.5 pt-1">
-              {project.tech?.map((t, i) => (
+            <div className="flex flex-wrap gap-2 mt-5">
+              {project.tech?.slice(0, 6).map((tech, i) => (
                 <span
                   key={i}
-                  className="text-[10px] font-semibold text-slate-600 px-2 py-0.5 rounded-full"
-                  style={{
-                    background: "rgba(255,255,255,0.72)",
-                    border: "1px solid rgba(203,213,225,0.55)",
-                  }}
+                  className="px-3 py-1 rounded-full text-[11px] font-semibold bg-white border border-slate-200 text-slate-600"
                 >
-                  {t}
+                  {tech}
                 </span>
               ))}
+            </div>
+
+            <div className="mt-6 flex items-center justify-between">
+              <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
+                View Repository
+              </span>
+
+              <div className="w-9 h-9 rounded-full bg-slate-900 text-white flex items-center justify-center group-hover:rotate-45 transition-transform duration-300">
+                <FontAwesomeIcon
+                  icon={faArrowUpRightFromSquare}
+                  className="text-xs"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -139,5 +173,8 @@ export default function ProjectCard({ project, index, activeCategory }) {
 ProjectCard.propTypes = {
   project: PropTypes.object.isRequired,
   index: PropTypes.number.isRequired,
-  activeCategory: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  activeCategory: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]).isRequired,
 };

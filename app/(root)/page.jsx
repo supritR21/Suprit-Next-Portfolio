@@ -156,8 +156,9 @@ export default function MyPage() {
   const projects = [
     {
       title: "Smart Meet",
-      subtitle: "AI-powered meeting platform with real-time transcription, automated summaries, and intelligent action item extraction.",
-      tech: ["Next.js", "TypeScript", "OpenAI", "Drizzle ORM", "PostgreSQL"],
+      subtitle:
+        "AI-powered meeting platform with real-time transcription, cloud recording, automated summaries, personalized AI agents, and a RAG-based assistant for transcript and meeting history queries.",
+      tech: ["Next.js", "PostgreSQL", "Stream SDK", "OpenAI", "Inngest", "Better-Auth", "LangGraph", "RAG"],
       link: "https://smart-meet-eight.vercel.app/",
       github: null,
       gradientBorder: "linear-gradient(135deg, #6366f1, #8b5cf6, #a78bfa)",
@@ -477,10 +478,10 @@ export default function MyPage() {
             {/* ══════════ PROJECTS ══════════ */}
             <section className="section overflow-hidden" data-anchor="projects-section">
               <div className="h-full flex flex-col justify-center pl-20 md:pl-36 pr-10 md:pr-20 py-8 max-w-7xl mx-auto w-full">
-
                 <motion.p {...fadeUp(0)} className="text-xs font-bold tracking-[0.25em] uppercase text-slate-400 mb-1">
                   03 / Projects
                 </motion.p>
+
                 <motion.h1
                   {...fadeUp(0.05)}
                   className="text-5xl md:text-6xl font-extrabold mb-1"
@@ -488,101 +489,137 @@ export default function MyPage() {
                 >
                   Projects
                 </motion.h1>
-                <motion.div {...fadeUp(0.08)} className="mb-5"><Hr /></motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-3 flex-1 min-h-0">
+                <motion.div {...fadeUp(0.08)} className="mb-5">
+                  <Hr />
+                </motion.div>
 
-                  {/* ── FEATURED: Smart Meet — tall left card (row-span-2) ── */}
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-3 md:auto-rows-[1fr] items-stretch flex-1 min-h-0">
+                  {/* Left: Smart Meet */}
+                  {/* ── FEATURED: Smart Meet — denser featured card ── */}
                   <motion.div
                     {...fadeUp(0.1)}
-                    className="md:col-span-5 md:row-span-2 rounded-2xl p-[1.5px] group"
+                    className="md:col-span-5 md:row-span-2 rounded-2xl p-[1.5px] group h-full"
                     style={{ background: projects[0].gradientBorder }}
                   >
                     <div className="rounded-[14px] h-full p-6 flex flex-col justify-between gap-3" style={glassBold}>
                       <div className="flex items-center justify-between">
-                        <span className={`text-[0.58rem] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full border ${projects[0].tagColor}`}>
+                        <span
+                          className={`text-[0.58rem] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full border ${projects[0].tagColor}`}
+                        >
                           {projects[0].tag}
                         </span>
                         <div className="flex items-center gap-2">
-                          <span className="text-[0.58rem] font-bold uppercase tracking-widest text-violet-600 px-2.5 py-1 rounded-full"
-                            style={{ background: "rgba(237,233,254,0.8)", border: "1px solid rgba(196,181,253,0.4)" }}>
+                          <span
+                            className="text-[0.58rem] font-bold uppercase tracking-widest text-violet-600 px-2.5 py-1 rounded-full"
+                            style={{
+                              background: "rgba(237,233,254,0.8)",
+                              border: "1px solid rgba(196,181,253,0.4)",
+                            }}
+                          >
                             ★ Featured
                           </span>
-                          <a href={projects[0].link} target="_blank" rel="noopener noreferrer"
-                            className="text-slate-300 hover:text-violet-500 transition-colors">
+                          <a
+                            href={projects[0].link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-slate-300 hover:text-violet-500 transition-colors"
+                          >
                             <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="text-sm" />
                           </a>
                         </div>
                       </div>
 
-                      <div className="flex-1 flex flex-col justify-center gap-3">
-                        <div className="w-full h-24 rounded-xl flex items-center justify-center"
-                          style={{ background: "linear-gradient(135deg, rgba(99,102,241,0.08), rgba(167,139,250,0.13))", border: "1px solid rgba(167,139,250,0.18)" }}>
-                          <span className="text-4xl opacity-60">🤝</span>
-                          <div className="ml-4 space-y-1.5">
-                            <div className="w-20 h-1.5 rounded-full bg-violet-200/60" />
-                            <div className="w-14 h-1.5 rounded-full bg-violet-200/40" />
-                            <div className="w-16 h-1.5 rounded-full bg-violet-200/30" />
+                      <div className="flex flex-col gap-3">
+                        {/* Reduced preview area */}
+                        <div
+                          className="w-full h-16 md:h-18 rounded-xl flex items-center justify-center"
+                          style={{
+                            background: "linear-gradient(135deg, rgba(99,102,241,0.08), rgba(167,139,250,0.13))",
+                            border: "1px solid rgba(167,139,250,0.18)",
+                          }}
+                        >
+                          <div className="flex items-center gap-3">
+                            <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-white/50 border border-violet-200/40">
+                              <span className="text-2xl opacity-70">🎙️</span>
+                            </div>
+
+                            <div className="space-y-1">
+                              <div className="w-28 h-1.5 rounded-full bg-violet-200/60" />
+                              <div className="w-20 h-1.5 rounded-full bg-violet-200/40" />
+                              <div className="w-24 h-1.5 rounded-full bg-violet-200/30" />
+                            </div>
                           </div>
                         </div>
-                        <h3 className="text-3xl font-extrabold text-slate-900 leading-tight" style={{ fontFamily: "'Sora', sans-serif" }}>
-                          {projects[0].title}
-                        </h3>
-                        <p className="text-sm text-slate-500 leading-relaxed">{projects[0].subtitle}</p>
+
+                        <div className="space-y-2">
+                          <h3
+                            className="text-3xl font-extrabold text-slate-900 leading-tight"
+                            style={{ fontFamily: "'Sora', sans-serif" }}
+                          >
+                            Smart Meet
+                          </h3>
+                          <p className="text-sm text-slate-500 leading-relaxed">
+                            AI-powered meeting platform with real-time transcription, cloud recording,
+                            automated summaries, personalized AI agents, and a RAG-based assistant for
+                            meeting history and transcript queries.
+                          </p>
+                        </div>
+
+                        {/* Compact feature/stats section */}
+                        <div className="grid grid-cols-2 gap-2">
+                          {[
+                            "Real-time transcription",
+                            "Cloud recording",
+                            "Auto summaries",
+                            "Meeting RAG chatbot",
+                            "CRM automation",
+                            "AI agents + MCP tools",
+                          ].map((item) => (
+                            <div
+                              key={item}
+                              className="rounded-lg px-3 py-2 text-[0.68rem] font-semibold text-slate-600 leading-tight"
+                              style={{
+                                background: "rgba(255,255,255,0.66)",
+                                border: "1px solid rgba(203,213,225,0.5)",
+                              }}
+                            >
+                              {item}
+                            </div>
+                          ))}
+                        </div>
                       </div>
 
-                      <div className="space-y-2.5">
+                      <div className="space-y-2">
                         <div className="flex flex-wrap gap-1.5">
                           {projects[0].tech.map((t) => (
-                            <span key={t} className="text-[10px] font-semibold text-slate-600 px-2.5 py-0.5 rounded-full"
-                              style={{ background: "rgba(255,255,255,0.72)", border: "1px solid rgba(203,213,225,0.55)" }}>{t}</span>
+                            <span
+                              key={t}
+                              className="text-[10px] font-semibold text-slate-600 px-2.5 py-0.5 rounded-full"
+                              style={{
+                                background: "rgba(255,255,255,0.72)",
+                                border: "1px solid rgba(203,213,225,0.55)",
+                              }}
+                            >
+                              {t}
+                            </span>
                           ))}
                         </div>
-                        <a href={projects[0].link} target="_blank" rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 text-sm font-bold text-violet-600 hover:text-violet-700 transition-colors">
-                          View Live <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="text-xs" />
-                        </a>
-                      </div>
-                    </div>
-                  </motion.div>
 
-                  {/* ── CrowdChain — top-right wide card ── */}
-                  <motion.div
-                    {...fadeUp(0.13)}
-                    className="md:col-span-7 rounded-2xl p-[1.5px] group"
-                    style={{ background: projects[1].gradientBorder }}
-                  >
-                    <div className="rounded-[14px] h-full p-5 flex flex-col justify-between gap-3" style={glassBold}>
-                      <div className="flex items-start justify-between gap-3">
-                        <div className="space-y-1.5 flex-1">
-                          <span className={`text-[0.58rem] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full border ${projects[1].tagColor}`}>
-                            {projects[1].tag}
-                          </span>
-                          <h3 className="text-2xl md:text-3xl font-extrabold text-slate-900 leading-tight" style={{ fontFamily: "'Sora', sans-serif" }}>
-                            {projects[1].title}
-                          </h3>
-                          <p className="text-sm text-slate-500 leading-relaxed">{projects[1].subtitle}</p>
-                        </div>
-                        <div className="shrink-0 hidden md:flex items-center justify-center w-24 h-24 rounded-xl"
-                          style={{ background: "linear-gradient(135deg, rgba(251,146,60,0.08), rgba(239,68,68,0.1))", border: "1px solid rgba(251,146,60,0.18)" }}>
-                          <span className="text-4xl opacity-70">⛓️</span>
-                        </div>
-                      </div>
+                        <div className="flex items-center justify-between gap-3 flex-wrap">
+                          <div className="flex items-center gap-2 text-[0.72rem] text-slate-500 font-semibold">
+                            <span className="px-2 py-0.5 rounded-full bg-violet-50 text-violet-700 border border-violet-200">
+                              In build
+                            </span>
+                            <span>AI SaaS</span>
+                          </div>
 
-                      <div className="flex items-end justify-between gap-3 flex-wrap">
-                        <div className="flex flex-wrap gap-1.5">
-                          {projects[1].tech.map((t) => (
-                            <span key={t} className="text-[10px] font-semibold text-slate-600 px-2.5 py-0.5 rounded-full"
-                              style={{ background: "rgba(255,255,255,0.72)", border: "1px solid rgba(203,213,225,0.55)" }}>{t}</span>
-                          ))}
-                        </div>
-                        <div className="flex items-center gap-4 shrink-0">
-                          <a href={projects[1].github} target="_blank" rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1.5 text-sm font-bold text-slate-600 hover:text-slate-900 transition-colors">
-                            <FontAwesomeIcon icon={faGithub} className="text-base" /> GitHub
-                          </a>
-                          <a href="https://crowd-funding-marketplace-web3.vercel.app/" target="_blank" rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1.5 text-sm font-bold text-orange-600 hover:text-orange-700 transition-colors">
+                          <a
+                            href={projects[0].link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 text-sm font-bold text-violet-600 hover:text-violet-700 transition-colors"
+                          >
                             View Live <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="text-xs" />
                           </a>
                         </div>
@@ -590,53 +627,140 @@ export default function MyPage() {
                     </div>
                   </motion.div>
 
-                  {/* ── Vitamap + BookNest — bottom-right ── */}
-                  {projects.slice(2).map((proj, idx) => (
+                  {/* Right side: CrowdChain stacked over Vitamap + BookNest */}
+                  <div className="md:col-span-5 md:row-span-2 flex flex-col gap-3 h-full min-h-0">
+                    {/* CrowdChain */}
                     <motion.div
-                      key={proj.title}
-                      {...fadeUp(0.17 + idx * 0.07)}
-                      className="md:col-span-3 rounded-2xl p-[1.5px] group"
-                      style={{ background: proj.gradientBorder }}
+                      {...fadeUp(0.13)}
+                      className="rounded-2xl p-[1.5px] group flex-[1.15] min-h-0"
+                      style={{ background: projects[1].gradientBorder }}
                     >
-                      <div className="rounded-[14px] h-full p-4 flex flex-col justify-between gap-2.5" style={glass}>
-                        <div className="flex items-start justify-between">
-                          <div className="space-y-1 flex-1">
-                            <span className={`text-[0.55rem] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full border ${proj.tagColor}`}>
-                              {proj.tag}
+                      <div className="rounded-[14px] h-full p-5 flex flex-col justify-between gap-3" style={glassBold}>
+                        <div className="flex items-start justify-between gap-3">
+                          <div className="space-y-1.5 flex-1">
+                            <span className={`text-[0.58rem] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full border ${projects[1].tagColor}`}>
+                              {projects[1].tag}
                             </span>
-                            <h3 className="text-lg font-extrabold text-slate-900 leading-snug block" style={{ fontFamily: "'Sora', sans-serif" }}>
-                              {proj.title}
+                            <h3 className="text-2xl md:text-3xl font-extrabold text-slate-900 leading-tight" style={{ fontFamily: "'Sora', sans-serif" }}>
+                              {projects[1].title}
                             </h3>
+                            <p className="text-sm text-slate-500 leading-relaxed">{projects[1].subtitle}</p>
                           </div>
-                          <a href={proj.link} target="_blank" rel="noopener noreferrer"
-                            className="text-slate-300 hover:text-blue-500 transition-colors shrink-0 ml-2 mt-0.5">
-                            <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="text-sm" />
-                          </a>
+
+                          <div
+                            className="shrink-0 hidden md:flex items-center justify-center w-24 h-24 rounded-xl"
+                            style={{
+                              background: "linear-gradient(135deg, rgba(251,146,60,0.08), rgba(239,68,68,0.1))",
+                              border: "1px solid rgba(251,146,60,0.18)",
+                            }}
+                          >
+                            <span className="text-4xl opacity-70">⛓️</span>
+                          </div>
                         </div>
-                        <p className="text-[0.72rem] text-slate-500 leading-relaxed flex-1">{proj.subtitle}</p>
-                        <div className="space-y-2">
-                          <div className="flex flex-wrap gap-1">
-                            {proj.tech.map((t) => (
-                              <span key={t} className="text-[9px] font-semibold text-slate-500 px-1.5 py-0.5 rounded-full"
-                                style={{ background: "rgba(255,255,255,0.65)", border: "1px solid rgba(203,213,225,0.45)" }}>{t}</span>
+
+                        <div className="flex items-end justify-between gap-3 flex-wrap">
+                          <div className="flex flex-wrap gap-1.5">
+                            {projects[1].tech.map((t) => (
+                              <span
+                                key={t}
+                                className="text-[10px] font-semibold text-slate-600 px-2.5 py-0.5 rounded-full"
+                                style={{ background: "rgba(255,255,255,0.72)", border: "1px solid rgba(203,213,225,0.55)" }}
+                              >
+                                {t}
+                              </span>
                             ))}
                           </div>
-                          <a href={proj.link} target="_blank" rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1 text-[0.7rem] font-bold text-blue-600 hover:text-blue-700 transition-colors">
-                            View Live <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="text-[9px]" />
-                          </a>
+
+                          <div className="flex items-center gap-4 shrink-0">
+                            <a
+                              href={projects[1].github}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1.5 text-sm font-bold text-slate-600 hover:text-slate-900 transition-colors"
+                            >
+                              <FontAwesomeIcon icon={faGithub} className="text-base" /> GitHub
+                            </a>
+                            <a
+                              href={projects[1].link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1.5 text-sm font-bold text-orange-600 hover:text-orange-700 transition-colors"
+                            >
+                              View Live <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="text-xs" />
+                            </a>
+                          </div>
                         </div>
                       </div>
                     </motion.div>
-                  ))}
 
+                    {/* Bottom pair */}
+                    <div className="grid grid-cols-2 gap-3 flex-1 min-h-0">
+                      {projects.slice(2).map((proj, idx) => (
+                        <motion.div
+                          key={proj.title}
+                          {...fadeUp(0.17 + idx * 0.07)}
+                          className="rounded-2xl p-[1.5px] group h-full min-h-0"
+                          style={{ background: proj.gradientBorder }}
+                        >
+                          <div className="rounded-[14px] h-full p-4 flex flex-col justify-between gap-2.5" style={glass}>
+                            <div className="flex items-start justify-between">
+                              <div className="space-y-1 flex-1">
+                                <span
+                                  className={`text-[0.55rem] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full border ${proj.tagColor}`}
+                                >
+                                  {proj.tag}
+                                </span>
+                                <h3 className="text-lg font-extrabold text-slate-900 leading-snug block" style={{ fontFamily: "'Sora', sans-serif" }}>
+                                  {proj.title}
+                                </h3>
+                              </div>
+                              <a
+                                href={proj.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-slate-300 hover:text-blue-500 transition-colors shrink-0 ml-2 mt-0.5"
+                              >
+                                <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="text-sm" />
+                              </a>
+                            </div>
+
+                            <p className="text-[0.72rem] text-slate-500 leading-relaxed flex-1">{proj.subtitle}</p>
+
+                            <div className="space-y-2">
+                              <div className="flex flex-wrap gap-1">
+                                {proj.tech.map((t) => (
+                                  <span
+                                    key={t}
+                                    className="text-[9px] font-semibold text-slate-500 px-1.5 py-0.5 rounded-full"
+                                    style={{ background: "rgba(255,255,255,0.65)", border: "1px solid rgba(203,213,225,0.45)" }}
+                                  >
+                                    {t}
+                                  </span>
+                                ))}
+                              </div>
+
+                              <a
+                                href={proj.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-1 text-[0.7rem] font-bold text-blue-600 hover:text-blue-700 transition-colors"
+                              >
+                                View Live <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="text-[9px]" />
+                              </a>
+                            </div>
+                          </div>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
 
                 <motion.div {...fadeUp(0.32)} className="mt-4 flex items-center gap-4">
-                  <Button variation="primary"><Link href="/projects">See All Projects</Link></Button>
+                  <Button variation="primary">
+                    <Link href="/projects">See All Projects</Link>
+                  </Button>
                   <span className="text-xs text-slate-400 font-semibold">4 projects · more on GitHub</span>
                 </motion.div>
-
               </div>
             </section>
 

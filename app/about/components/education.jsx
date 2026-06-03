@@ -148,7 +148,7 @@ export default function Education() {
               className="text-xs font-bold px-3 py-1.5 rounded-full text-blue-700"
               style={{ background: "rgba(239,246,255,0.8)", border: "1px solid rgba(147,197,253,0.5)" }}
             >
-              CPI: 8.39 / 10
+              CPI: 8.46 / 10
             </span>
           </div>
         </motion.div>

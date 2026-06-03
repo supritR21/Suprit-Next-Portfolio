@@ -3,8 +3,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import Hr from "@/components/Hr";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 
 const ease = [0.16, 1, 0.3, 1];
 
@@ -36,73 +34,49 @@ const experiences = [
     id: 1,
     startDate: "Apr 2024",
     endDate: "Present",
-    company: "HackSlash NIT Patna",
-    position: "Full Stack Developer",
-    type: "Core Team Member",
-    location: "Patna, India",
-    accent: "from-violet-500 to-indigo-600",
-    description: "Contributing to HackSlash's open-source and internal projects focused on web applications and AI-powered solutions. Collaborate in a team to build scalable systems using modern web technologies.",
-    skills: ["Next.js", "React", "Node.js", "Express.js", "TailwindCSS", "Git"],
+    company: "Smart Meet (SaaS Startup)",
+    position: "Founder & Lead Engineer",
+    type: "Startup",
+    location: "Remote",
+    accent: "from-blue-600 to-indigo-700",
+    description: "Architected an AI-powered meeting platform with real-time transcription and agent-driven workflows. Developed a Model Context Protocol (MCP) bridge for automated meeting-summary ingestion into Notion and Slack, and implemented a RAG system for contextual querying of meeting history.",
+    skills: ["Next.js", "FastAPI", "MCP", "RAG", "Redis", "PostgreSQL", "OpenAI"],
   },
   {
     id: 2,
-    startDate: "Jan 2024",
-    endDate: "Present",
-    company: "Web Club NIT Patna",
-    position: "Web Developer",
-    type: "Student Organization",
+    startDate: "Aug 2023",
+    endDate: "Feb 2024",
+    company: "Supplier Risk Detector",
+    position: "AI Systems Engineer",
+    type: "Walmart Hackathon 2025",
     location: "Patna, India",
-    accent: "from-blue-500 to-cyan-500",
-    description: "Worked on the design and development of official club web portals. Implemented responsive interfaces, optimized UI/UX design, and introduced collaborative version control workflows.",
-    skills: ["React", "Next.js", "Figma", "GitHub", "UI/UX Design"],
+    accent: "from-emerald-500 to-teal-600",
+    description: "Engineered a multi-agent risk assessment platform using LangGraph. Integrated geospatial analytics for real-time risk visualization and automated supplier health monitoring through conversational AI insights.",
+    skills: ["LangGraph", "Python", "FastAPI", "Next.js", "Geospatial Analytics", "OpenAI"],
   },
   {
     id: 3,
-    startDate: "Mar 2024",
-    endDate: "Jul 2024",
-    company: "Freelance",
-    position: "AI Developer & Consultant",
-    type: "Freelance (Remote)",
-    location: "Remote, India",
-    accent: "from-emerald-500 to-teal-500",
-    description: "Delivered AI integration solutions for startups and student-led projects, specializing in RAG pipelines, LangChain workflows, and OpenAI/Gemini API integrations with FastAPI backends.",
-    skills: ["FastAPI", "LangChain", "OpenAI API", "Gemini API", "Python", "Next.js"],
+    startDate: "Jan 2024",
+    endDate: "Present",
+    company: "The Interviewer",
+    position: "AI Developer",
+    type: "Personal Project",
+    location: "Remote",
+    accent: "from-violet-500 to-purple-600",
+    description: "Built an AI-driven mock interview platform featuring voice-based sessions. Integrated Voice AI (Vapi) and Gemini to provide real-time interview experiences with structured feedback scoring and performance analytics.",
+    skills: ["TypeScript", "Voice AI", "Gemini", "Next.js", "Firebase", "Vapi"],
   },
   {
     id: 4,
-    startDate: "Aug 2023",
-    endDate: "Feb 2024",
-    company: "Personal Project – Supplier Lens",
-    position: "Lead Developer",
-    type: "Academic Project",
-    location: "Patna, India",
-    accent: "from-amber-500 to-orange-500",
-    description: "Built an AI-powered supplier risk analysis system integrating GPT-4o with a LangGraph-based multi-agent pipeline. Designed a modern dashboard using Next.js and FastAPI backend.",
-    skills: ["Next.js", "FastAPI", "LangGraph", "OpenAI GPT-4o", "MongoDB", "TypeScript"],
-  },
-  {
-    id: 5,
     startDate: "May 2023",
     endDate: "Jan 2024",
-    company: "Personal Project – Vitamap",
+    company: "VitaMap",
     position: "Full Stack Developer",
     type: "Independent Project",
     location: "Patna, India",
-    accent: "from-pink-500 to-rose-500",
+    accent: "from-rose-500 to-pink-600",
     description: "Developed a pharmacy web platform integrating OpenStreetMap APIs, Pinecone vector storage, and RAG search for intelligent medicine retrieval. Focused on backend scalability and UI responsiveness.",
     skills: ["Next.js", "FastAPI", "RAG", "Pinecone", "OpenStreetMap", "Python"],
-  },
-  {
-    id: 6,
-    startDate: "2023",
-    endDate: "Present",
-    company: "Freelance",
-    position: "Full Stack Web Developer",
-    type: "Freelance",
-    location: "Remote, India",
-    accent: "from-slate-500 to-slate-700",
-    description: "Delivered several client-based web solutions using MERN and Next.js stacks. Worked closely with clients to define requirements, create wireframes, and deploy applications to production.",
-    skills: ["React", "Next.js", "MongoDB", "Node.js", "Express.js", "Docker"],
   },
 ].reverse();
 
@@ -112,7 +86,6 @@ export default function Experience() {
 
   return (
     <section className="max-w-6xl mx-auto px-8 md:px-20 py-16">
-
       <motion.p
         initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }} transition={{ duration: 0.55, ease }}
@@ -138,9 +111,7 @@ export default function Experience() {
         <Hr />
       </motion.div>
 
-      {/* Timeline */}
       <div className="relative">
-        {/* Vertical line */}
         <div
           className="absolute left-[19px] top-0 bottom-0 w-px"
           style={{ background: "linear-gradient(to bottom, rgba(99,102,241,0.5), rgba(99,102,241,0.05))" }}
@@ -157,18 +128,12 @@ export default function Experience() {
                 transition={{ duration: 0.5, ease, delay: i * 0.07 }}
                 className="relative pl-12"
               >
-                {/* Dot */}
-                <div
-                  className="absolute left-0 top-6 w-10 h-10 rounded-xl flex items-center justify-center text-white text-xs font-bold shadow-md"
-                  style={{ background: `linear-gradient(135deg, ${exp.accent.replace("from-", "").replace(" to-", ", ")})`.replace(/\s/g, ""),
-                    background: `linear-gradient(135deg, var(--tw-gradient-from), var(--tw-gradient-to))` }}
-                >
+                <div className="absolute left-0 top-6 w-10 h-10 rounded-xl flex items-center justify-center shadow-md">
                   <div className={`w-10 h-10 rounded-xl bg-linear-to-br ${exp.accent} flex items-center justify-center shadow-md`}>
                     <span className="text-[10px] font-extrabold text-white">{exp.startDate.split(" ")[1] || exp.startDate}</span>
                   </div>
                 </div>
 
-                {/* Card */}
                 <div className="rounded-2xl p-6" style={glassBold}>
                   <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-3">
                     <div>
@@ -207,14 +172,12 @@ export default function Experience() {
           </AnimatePresence>
         </div>
 
-        {/* Bottom fade */}
-        {!showAll && (
+        {!showAll && experiences.length > 3 && (
           <div className="absolute bottom-0 left-0 right-0 h-28 pointer-events-none"
             style={{ background: "linear-gradient(to top, rgba(238,242,255,0.9), transparent)" }} />
         )}
       </div>
 
-      {/* Show more/less */}
       {experiences.length > 3 && (
         <motion.div
           initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
@@ -230,7 +193,6 @@ export default function Experience() {
           </button>
         </motion.div>
       )}
-
     </section>
   );
 }

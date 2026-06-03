@@ -1,4 +1,5 @@
 "use client";
+
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -17,18 +18,21 @@ import SmartMeet2 from "@/public/image/projects/web/smartmeet/smartmeet-2.jpg";
 import SmartMeet3 from "@/public/image/projects/web/smartmeet/smartmeet-3.jpg";
 
 const ease = [0.16, 1, 0.3, 1];
+
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 28 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true },
   transition: { duration: 0.65, ease, delay },
 });
+
 const fadeLeft = (delay = 0) => ({
   initial: { opacity: 0, x: -36 },
   whileInView: { opacity: 1, x: 0 },
   viewport: { once: true },
   transition: { duration: 0.6, ease, delay },
 });
+
 const fadeRight = (delay = 0) => ({
   initial: { opacity: 0, x: 36 },
   whileInView: { opacity: 1, x: 0 },
@@ -59,13 +63,55 @@ const glassBold = {
   boxShadow: "0 8px 36px rgba(0,0,0,0.07), inset 0 1px 0 rgba(255,255,255,0.95)",
 };
 
-const category = { 1: "Web Development", 2: "AI & Machine Learning" };
+const category = {
+  all: "All",
+  1: "Web Development",
+  2: "AI & Machine Learning",
+};
+
+const categoryMeta = {
+  1: {
+    title: "Web Development Projects",
+    subtitle: "Full-stack apps, dApps, tooling, and frontend systems.",
+    pill: "bg-blue-600 text-white",
+    chip: "text-blue-700 bg-blue-50 border-blue-200",
+  },
+  2: {
+    title: "AI & Machine Learning Projects",
+    subtitle: "Agentic systems, prediction models, and AI-powered workflows.",
+    pill: "bg-violet-600 text-white",
+    chip: "text-violet-700 bg-violet-50 border-violet-200",
+  },
+};
+
+const getCategoryKey = (project) => project.category?.[0] ?? 1;
+
+const groupProjects = (items) => {
+  return [1, 2]
+    .map((key) => ({
+      key: String(key),
+      meta: categoryMeta[key],
+      items: items.filter((project) => project.category?.includes(key)),
+    }))
+    .filter((group) => group.items.length > 0);
+};
 
 export default function Page() {
-  const [activeCategory, setActiveCategory] = useState("1");
+  const [activeCategory, setActiveCategory] = useState("all");
   const projects = Projects.Projects.filter((item) => item.show === true);
 
-  useEffect(() => { window.scrollTo(0, 0); }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const webCount = projects.filter((project) => project.category?.includes(1)).length;
+  const aiCount = projects.filter((project) => project.category?.includes(2)).length;
+  const grouped = groupProjects(projects);
+
+  const visibleGroups =
+    activeCategory === "all"
+      ? grouped
+      : grouped.filter((group) => group.key === activeCategory);
 
   return (
     <main
@@ -74,15 +120,34 @@ export default function Page() {
     >
       {/* Fixed ambient background */}
       <div className="fixed inset-0 -z-10 pointer-events-none overflow-hidden">
-        <div className="absolute inset-0" style={{
-          background: "linear-gradient(135deg, #eef2ff 0%, #f5f3ff 22%, #fdf4ff 45%, #eff6ff 68%, #f0fdf4 100%)",
-        }} />
-        <div className="absolute -top-32 right-0 w-[520px] h-[520px] rounded-full"
-          style={{ background: "radial-gradient(circle, rgba(165,180,252,0.5) 0%, transparent 68%)", filter: "blur(72px)" }} />
-        <div className="absolute top-1/2 -left-32 w-[440px] h-[440px] rounded-full"
-          style={{ background: "radial-gradient(circle, rgba(110,231,183,0.35) 0%, transparent 68%)", filter: "blur(72px)" }} />
-        <div className="absolute bottom-0 right-1/4 w-[460px] h-[460px] rounded-full"
-          style={{ background: "radial-gradient(circle, rgba(147,197,253,0.35) 0%, transparent 68%)", filter: "blur(72px)" }} />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(135deg, #eef2ff 0%, #f5f3ff 22%, #fdf4ff 45%, #eff6ff 68%, #f0fdf4 100%)",
+          }}
+        />
+        <div
+          className="absolute -top-32 right-0 w-[520px] h-[520px] rounded-full"
+          style={{
+            background: "radial-gradient(circle, rgba(165,180,252,0.5) 0%, transparent 68%)",
+            filter: "blur(72px)",
+          }}
+        />
+        <div
+          className="absolute top-1/2 -left-32 w-[440px] h-[440px] rounded-full"
+          style={{
+            background: "radial-gradient(circle, rgba(110,231,183,0.35) 0%, transparent 68%)",
+            filter: "blur(72px)",
+          }}
+        />
+        <div
+          className="absolute bottom-0 right-1/4 w-[460px] h-[460px] rounded-full"
+          style={{
+            background: "radial-gradient(circle, rgba(147,197,253,0.35) 0%, transparent 68%)",
+            filter: "blur(72px)",
+          }}
+        />
       </div>
 
       {/* Back button */}
@@ -91,12 +156,16 @@ export default function Page() {
       </FixedButton>
 
       {/* ── HERO ── */}
-      <section className="relative min-h-screen flex flex-col justify-center px-8 md:px-24 pt-28 pb-16 max-w-7xl mx-auto">
-
+      <section className="relative min-h-screen flex flex-col justify-center px-8 md:px-24 pt-28 pb-16 max-w-[1500px] mx-auto">
         <motion.div {...fadeLeft(0)} className="mb-3">
           <span
             className="inline-flex items-center gap-2 text-xs font-bold tracking-[0.22em] uppercase text-blue-600 px-4 py-1.5 rounded-full"
-            style={{ background: "rgba(239,246,255,0.75)", backdropFilter: "blur(10px)", WebkitBackdropFilter: "blur(10px)", border: "1px solid rgba(147,197,253,0.45)" }}
+            style={{
+              background: "rgba(239,246,255,0.75)",
+              backdropFilter: "blur(10px)",
+              WebkitBackdropFilter: "blur(10px)",
+              border: "1px solid rgba(147,197,253,0.45)",
+            }}
           >
             <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
             Portfolio · Work
@@ -105,41 +174,49 @@ export default function Page() {
 
         <motion.h1
           {...fadeLeft(0.07)}
-          className="text-[clamp(3.5rem,8vw,7rem)] font-extrabold leading-[1.0] tracking-[-0.025em] mb-4"
+          className="text-[clamp(3.5rem,8vw,7rem)] font-extrabold leading-1.0 tracking-[-0.025em] mb-4"
           style={{ ...gradientText, fontFamily: "'Sora', sans-serif" }}
         >
           My Projects
         </motion.h1>
 
-        <motion.div {...fadeLeft(0.1)} className="mb-6"><Hr /></motion.div>
+        <motion.div {...fadeLeft(0.1)} className="mb-6">
+          <Hr />
+        </motion.div>
 
-        <motion.p {...fadeLeft(0.14)} className="text-base text-slate-500 max-w-xl leading-[1.85] mb-10">
-          A curated collection of my featured work — spanning AI systems, modern web
-          applications, Web3 platforms, and innovative solutions built to solve real-world problems.
+        <motion.p
+          {...fadeLeft(0.14)}
+          className="text-base text-slate-500 max-w-xl leading-[1.85] mb-10"
+        >
+          A curated collection of my featured work — spanning AI systems, modern web applications,
+          Web3 platforms, and innovative solutions built to solve real-world problems.
         </motion.p>
 
         {/* Hero stat row */}
         <motion.div {...fadeLeft(0.18)} className="flex flex-wrap gap-10 mb-14">
           {[
-            { label: "Total Projects", value: `${Projects.Projects.length}+` },
-            { label: "AI / GenAI",     value: "3+"  },
-            { label: "Web3",           value: "1"   },
-            { label: "Open Source",    value: "Yes" },
+            { label: "Total Projects", value: `${projects.length}+` },
+            { label: "Web Development", value: `${webCount}+` },
+            { label: "AI / Machine Learning", value: `${aiCount}+` },
+            { label: "Open Source", value: "Yes" },
           ].map(({ label, value }) => (
             <div key={label}>
-              <p className="text-[0.62rem] uppercase tracking-widest text-slate-400 font-bold mb-0.5">{label}</p>
-              <p className="text-3xl font-extrabold text-slate-900" style={{ fontFamily: "'Sora', sans-serif" }}>{value}</p>
+              <p className="text-[0.62rem] uppercase tracking-widest text-slate-400 font-bold mb-0.5">
+                {label}
+              </p>
+              <p
+                className="text-3xl font-extrabold text-slate-900"
+                style={{ fontFamily: "'Sora', sans-serif" }}
+              >
+                {value}
+              </p>
             </div>
           ))}
         </motion.div>
 
         {/* Floating image collage */}
         <div className="absolute right-8 md:right-24 top-28 w-[42vw] max-w-lg hidden md:block">
-          <motion.div
-            {...fadeRight(0.08)}
-            className="relative h-[480px]"
-          >
-            {/* Card 1 */}
+          <motion.div {...fadeRight(0.08)} className="relative h-[480px]">
             <motion.div
               initial={{ opacity: 0, y: 20, rotate: -3 }}
               whileInView={{ opacity: 1, y: 0, rotate: -3 }}
@@ -148,9 +225,14 @@ export default function Page() {
               className="absolute top-0 left-0 w-[62%] aspect-video rounded-2xl overflow-hidden shadow-2xl"
               style={{ boxShadow: "0 20px 60px rgba(99,102,241,0.2)" }}
             >
-              <Image src={SmartMeet1} alt="SmartMeet" fill className="object-cover grayscale hover:grayscale-0 transition-all duration-500" />
+              <Image
+                src={SmartMeet1}
+                alt="SmartMeet"
+                fill
+                className="object-cover grayscale hover:grayscale-0 transition-all duration-500"
+              />
             </motion.div>
-            {/* Card 2 */}
+
             <motion.div
               initial={{ opacity: 0, y: 20, rotate: 2 }}
               whileInView={{ opacity: 1, y: 0, rotate: 2 }}
@@ -159,9 +241,14 @@ export default function Page() {
               className="absolute top-12 right-0 w-[46%] aspect-video rounded-2xl overflow-hidden shadow-xl"
               style={{ boxShadow: "0 16px 48px rgba(139,92,246,0.18)" }}
             >
-              <Image src={SmartMeet3} alt="SmartMeet" fill className="object-cover grayscale hover:grayscale-0 transition-all duration-500" />
+              <Image
+                src={SmartMeet3}
+                alt="SmartMeet"
+                fill
+                className="object-cover grayscale hover:grayscale-0 transition-all duration-500"
+              />
             </motion.div>
-            {/* Card 3 */}
+
             <motion.div
               initial={{ opacity: 0, y: 20, rotate: -1 }}
               whileInView={{ opacity: 1, y: 0, rotate: -1 }}
@@ -170,37 +257,42 @@ export default function Page() {
               className="absolute bottom-0 left-10 w-[58%] aspect-video rounded-2xl overflow-hidden shadow-xl"
               style={{ boxShadow: "0 16px 40px rgba(59,130,246,0.15)" }}
             >
-              <Image src={SmartMeet2} alt="SmartMeet" fill className="object-cover grayscale hover:grayscale-0 transition-all duration-500" />
+              <Image
+                src={SmartMeet2}
+                alt="SmartMeet"
+                fill
+                className="object-cover grayscale hover:grayscale-0 transition-all duration-500"
+              />
             </motion.div>
           </motion.div>
         </div>
 
         <motion.div {...fadeLeft(0.22)}>
           <Button variation="primary">
-            <a onClick={() => window.scrollTo({ top: window.innerHeight, behavior: "smooth" })} className="cursor-pointer">
+            <a
+              onClick={() => window.scrollTo({ top: window.innerHeight, behavior: "smooth" })}
+              className="cursor-pointer"
+            >
               View Projects ↓
             </a>
           </Button>
         </motion.div>
-
       </section>
 
       {/* ── FEATURED: SMART MEET ── */}
-      <section className="relative px-8 md:px-24 py-20 max-w-7xl mx-auto">
-
-        {/* Section label */}
+      <section className="relative px-8 md:px-24 py-20 max-w-[1500px] mx-auto">
         <motion.div {...fadeUp(0)} className="mb-10 flex items-center gap-4">
           <div className="w-8 h-px bg-slate-300" />
-          <span className="text-xs font-bold tracking-[0.25em] uppercase text-slate-400">Featured Project</span>
+          <span className="text-xs font-bold tracking-[0.25em] uppercase text-slate-400">
+            Featured Project
+          </span>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-
-          {/* Images */}
           <motion.div {...fadeLeft(0.06)} className="relative h-[380px] md:h-[440px]">
             {[
               { src: SmartMeet1, cls: "top-16 left-0 w-[58%]", delay: 0.1, rotate: -2 },
-              { src: SmartMeet3, cls: "top-0 right-4 w-[44%]",  delay: 0.2, rotate: 2  },
+              { src: SmartMeet3, cls: "top-0 right-4 w-[44%]", delay: 0.2, rotate: 2 },
               { src: SmartMeet2, cls: "bottom-0 right-0 w-[55%]", delay: 0.3, rotate: -1 },
             ].map(({ src, cls, delay, rotate }, i) => (
               <motion.div
@@ -212,17 +304,24 @@ export default function Page() {
                 className={`absolute ${cls} aspect-video rounded-2xl overflow-hidden`}
                 style={{ rotate: `${rotate}deg`, boxShadow: "0 16px 48px rgba(99,102,241,0.18)" }}
               >
-                <Image src={src} alt="SmartMeet" fill className="object-cover grayscale hover:grayscale-0 transition-all duration-500" />
+                <Image
+                  src={src}
+                  alt="SmartMeet"
+                  fill
+                  className="object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                />
               </motion.div>
             ))}
           </motion.div>
 
-          {/* Description */}
           <motion.div {...fadeRight(0.08)} className="flex flex-col gap-6">
             <div>
               <span
                 className="text-[0.62rem] font-bold uppercase tracking-widest text-violet-600 px-2.5 py-1 rounded-full mb-3 inline-block"
-                style={{ background: "rgba(237,233,254,0.8)", border: "1px solid rgba(196,181,253,0.4)" }}
+                style={{
+                  background: "rgba(237,233,254,0.8)",
+                  border: "1px solid rgba(196,181,253,0.4)",
+                }}
               >
                 ★ Featured
               </span>
@@ -235,15 +334,29 @@ export default function Page() {
             </div>
 
             <p className="text-[0.9rem] text-slate-500 leading-[1.9]">
-              An AI-powered meeting platform that records, transcribes, and summarizes meetings in real time.
-              Features intelligent AI agents for instant summaries, action-item extraction, highlights,
-              and deep insights across every conversation.
+              An AI-powered meeting platform that records, transcribes, and summarizes meetings in
+              real time. Features intelligent AI agents for instant summaries, action-item
+              extraction, highlights, and deep insights across every conversation.
             </p>
 
             <div className="flex flex-wrap gap-1.5">
-              {["Next.js 15", "TypeScript", "OpenAI", "Stream SDK", "Drizzle ORM", "tRPC", "TanStack Query"].map((t) => (
-                <span key={t} className="text-[11px] font-semibold text-slate-600 px-2.5 py-0.5 rounded-full"
-                  style={{ background: "rgba(255,255,255,0.72)", border: "1px solid rgba(203,213,225,0.55)" }}>
+              {[
+                "Next.js 15",
+                "TypeScript",
+                "OpenAI",
+                "Stream SDK",
+                "Drizzle ORM",
+                "tRPC",
+                "TanStack Query",
+              ].map((t) => (
+                <span
+                  key={t}
+                  className="text-[11px] font-semibold text-slate-600 px-2.5 py-0.5 rounded-full"
+                  style={{
+                    background: "rgba(255,255,255,0.72)",
+                    border: "1px solid rgba(203,213,225,0.55)",
+                  }}
+                >
                   {t}
                 </span>
               ))}
@@ -281,12 +394,12 @@ export default function Page() {
       </section>
 
       {/* ── OTHER PROJECTS ── */}
-      <section className="px-8 md:px-24 py-16 max-w-7xl mx-auto">
-
-        {/* Divider + header */}
+      <section className="px-8 md:px-24 py-16 max-w-[1500px] mx-auto">
         <motion.div {...fadeUp(0)} className="mb-4 flex items-center gap-4">
           <div className="w-8 h-px bg-slate-300" />
-          <span className="text-xs font-bold tracking-[0.25em] uppercase text-slate-400">All Projects</span>
+          <span className="text-xs font-bold tracking-[0.25em] uppercase text-slate-400">
+            All Projects
+          </span>
         </motion.div>
 
         <motion.h2
@@ -296,7 +409,18 @@ export default function Page() {
         >
           Other Noteworthy Projects
         </motion.h2>
-        <motion.div {...fadeUp(0.08)} className="mb-8"><Hr /></motion.div>
+
+        <motion.div {...fadeUp(0.08)} className="mb-8">
+          <Hr />
+        </motion.div>
+
+        <motion.p
+          {...fadeUp(0.1)}
+          className="mb-10 max-w-2xl text-sm md:text-base leading-[1.9] text-slate-500"
+        >
+          Projects are grouped by category so each section stays visually consistent and easier to
+          scan.
+        </motion.p>
 
         {/* Category filter */}
         <motion.div {...fadeUp(0.1)} className="flex flex-wrap gap-2.5 mb-10">
@@ -307,7 +431,12 @@ export default function Page() {
               className="px-5 py-2 rounded-xl text-sm font-semibold transition-all duration-250"
               style={
                 activeCategory === key
-                  ? { background: "linear-gradient(135deg, #1d4ed8, #6366f1)", color: "#fff", border: "1px solid transparent", boxShadow: "0 4px 16px rgba(99,102,241,0.3)" }
+                  ? {
+                      background: "linear-gradient(135deg, #1d4ed8, #6366f1)",
+                      color: "#fff",
+                      border: "1px solid transparent",
+                      boxShadow: "0 4px 16px rgba(99,102,241,0.3)",
+                    }
                   : { ...glass, color: "#475569" }
               }
             >
@@ -316,15 +445,39 @@ export default function Page() {
           ))}
         </motion.div>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-16">
-          {projects.map((project, index) => (
-            <ProjectCard
-              key={index}
-              project={project}
-              index={index}
-              activeCategory={activeCategory}
-            />
+        {/* Grouped sections */}
+        <div className="space-y-14 mb-16">
+          {visibleGroups.map(({ key, meta, items }) => (
+            <section key={key}>
+              <motion.div {...fadeUp(0.05)} className="mb-5 flex items-center gap-3">
+                <span
+                  className={`rounded-full px-3 py-1 text-[10px] font-bold tracking-[0.18em] uppercase ${meta.pill}`}
+                >
+                  {meta.title.includes("AI") ? "AI / ML" : "WEB DEV"}
+                </span>
+                <h3
+                  className="text-xl md:text-2xl font-extrabold text-slate-900"
+                  style={{ fontFamily: "'Sora', sans-serif" }}
+                >
+                  {meta.title}
+                </h3>
+              </motion.div>
+
+              <motion.p {...fadeUp(0.07)} className="mb-6 max-w-2xl text-sm text-slate-500 leading-[1.8]">
+                {meta.subtitle}
+              </motion.p>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                {items.map((project, index) => (
+                  <ProjectCard
+                    key={project.title + index}
+                    project={project}
+                    index={index}
+                    activeCategory={activeCategory}
+                  />
+                ))}
+              </div>
+            </section>
           ))}
         </div>
 
@@ -333,11 +486,11 @@ export default function Page() {
           <Button variation="primary">
             <Link href="/projects/archive">View Full Archive</Link>
           </Button>
-          <span className="text-xs text-slate-400 font-semibold">All {Projects.Projects.length} projects</span>
+          <span className="text-xs text-slate-400 font-semibold">
+            All {Projects.Projects.length} projects
+          </span>
         </motion.div>
-
       </section>
-
     </main>
   );
 }

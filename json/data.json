@@ -1,45 +1,714 @@
 {
   "Projects": [
-      {
-        "title": "Supplier Risk Detector",
-        "description": "AI-powered supply chain risk assessment platform for Walmart Hackathon 2025 with geospatial analytics.",
-        "github": "https://github.com/supritR21/Supplier-Risk-Detector2.git",
-        "category": [1],
-        "show": true,
-        "tech": ["Next.js", "FastAPI", "LangGraph", "PostgreSQL", "OpenAI"]
-    },
     {
-      "title": "VitaMap",
-      "description": "Medicine availability finder app with pharmacy inventory management, interactive maps, and AI chatbot.",
-      "github": "https://github.com/akasr/vitamap",
-      "category": [1],
+      "title": "Crowd Funding Marketplace Web3 ",
+      "description": "Decentralized crowdfunding platform on Ethereum with Solidity smart contracts and Next.js frontend",
+      "github": "https://github.com/supritR21/Crowd-Funding-Marketplace-Web3-",
+      "category": [
+        1
+      ],
       "show": true,
-      "tech": ["Next.js", "React", "Leaflet", "PostgreSQL", "OpenAI"]
+      "tech": [
+        "TypeScript",
+        "blockchain",
+        "crowdfunding",
+        "dapp",
+        "decentralized",
+        "ethereum",
+        "Hardhat",
+        "Next.js",
+        "smart-contracts",
+        "Solidity",
+        "Web3"
+      ]
     },
     {
-      "title": "BookNest",
-      "description": "Full-stack E-Library Management System with book borrowing, PYQ repository, and admin dashboard using JWT authentication.",
+      "title": "Driver Drowsiness Detection System V2 ",
+      "description": "",
+      "github": "https://github.com/supritR21/Driver-Drowsiness-Detection-System-V2-",
+      "category": [
+        1
+      ],
+      "show": true,
+      "tech": [
+        "Python"
+      ]
+    },
+    {
+      "title": "Suprit Next Portfolio",
+      "description": "Modern Next.js portfolio website with animated full-page sections, project showcases, contact integration, and real-time Spotify/chat widgets.",
+      "github": "https://github.com/supritR21/Suprit-Next-Portfolio",
+      "category": [
+        1
+      ],
+      "show": true,
+      "tech": [
+        "JavaScript",
+        "framer-motion",
+        "fullpagejs",
+        "Next.js",
+        "portfolio-website",
+        "react",
+        "responsive-design",
+        "swr",
+        "TailwindCSS",
+        "vercel-analytics",
+        "web-development"
+      ]
+    },
+    {
+      "title": "Book Recommendation System Data Mining Project",
+      "description": "Intelligent book recommendation engine using Apriori algorithm and association rule mining. FastAPI + Next.js full-stack application.",
+      "github": "https://github.com/supritR21/Book-Recommendation-System_Data-Mining-Project",
+      "category": [
+        2
+      ],
+      "show": true,
+      "tech": [
+        "TypeScript",
+        "apriori-algorithm",
+        "association-rules",
+        "book-recommendation-system",
+        "data-mining",
+        "FastAPI",
+        "full-stack",
+        "machine-learning",
+        "Next.js",
+        "python",
+        "react"
+      ]
+    },
+    {
+      "title": "Notion Mcp",
+      "description": "TypeScript MCP bridge for SmartMeet-to-Notion automation with OAuth connection, idempotent meeting-summary ingestion, and structured Notion page/database creation.",
+      "github": "https://github.com/supritR21/Notion-MCP",
+      "category": [
+        1
+      ],
+      "show": true,
+      "tech": [
+        "TypeScript",
+        "api-integration",
+        "automation",
+        "Express",
+        "mcp",
+        "meeting-notes",
+        "Node.js",
+        "notion",
+        "oauth2",
+        "redis",
+        "webhook",
+        "zod"
+      ]
+    },
+    {
+      "title": "Blog Writer Crewai",
+      "description": "CrewAI-based multi-agent blog writer that researches YouTube transcripts and generates Markdown technical blog posts from a given topic.",
+      "github": "https://github.com/supritR21/Blog-writer-crewai",
+      "category": [
+        1
+      ],
+      "show": true,
+      "tech": [
+        "Python",
+        "ai-agents",
+        "automation",
+        "blog-generator",
+        "content-automation",
+        "CrewAI",
+        "generative-ai",
+        "llm",
+        "markdown",
+        "multi-agent",
+        "OpenAI",
+        "youtube-transcript"
+      ]
+    },
+    {
+      "title": "Stockpricepredictor",
+      "description": "AI-powered stock forecasting dashboard with Streamlit, combining LSTM+GRU prediction, uncertainty estimation, and moving-average backtesting on live Yahoo Finance data.",
+      "github": "https://github.com/supritR21/StockPricePredictor",
+      "category": [
+        2
+      ],
+      "show": true,
+      "tech": [
+        "Python",
+        "algorithmic-trading",
+        "backtesting",
+        "gru",
+        "lstm",
+        "machine-learning",
+        "plotly",
+        "stock-prediction",
+        "streamlit",
+        "TensorFlow",
+        "time-series",
+        "yfinance"
+      ]
+    },
+    {
+      "title": "House Price Predictor",
+      "description": "End-to-end house price prediction system using ZenML and MLflow, with automated training, deployment, and inference pipelines on Ames Housing data.",
+      "github": "https://github.com/supritR21/House-Price-Predictor",
+      "category": [
+        2
+      ],
+      "show": true,
+      "tech": [
+        "Jupyter Notebook",
+        "data-science",
+        "feature-engineering",
+        "house-price-prediction",
+        "machine-learning",
+        "mlflow",
+        "model-deployment",
+        "pipeline",
+        "regression",
+        "scikit-learn",
+        "zenml"
+      ]
+    },
+    {
+      "title": "Defi Launchpad Dapp Token Sale Dashboard On Ethereum",
+      "description": "DeFi launchpad dApp for ERC20 token sales on Ethereum, featuring a Next.js dashboard, wallet integration, and Hardhat smart contracts.",
+      "github": "https://github.com/supritR21/DeFi-Launchpad-DApp-Token-Sale-Dashboard-on-Ethereum",
+      "category": [
+        1
+      ],
+      "show": true,
+      "tech": [
+        "JavaScript",
+        "dapp",
+        "defi",
+        "erc20",
+        "ethereum",
+        "Hardhat",
+        "ico",
+        "launchpad",
+        "metamask",
+        "Next.js",
+        "rainbowkit",
+        "Solidity",
+        "token-sale",
+        "wagmi",
+        "Web3",
+        "presale-dashboard"
+      ]
+    },
+    {
+      "title": "The Interviewer",
+      "description": "AI-powered mock interview platform with voice-based interview sessions, smart question generation, and structured feedback scoring.",
+      "github": "https://github.com/supritR21/The-Interviewer",
+      "category": [
+        2
+      ],
+      "show": true,
+      "tech": [
+        "TypeScript",
+        "ai-interview",
+        "edtech",
+        "firebase",
+        "firestore",
+        "gemini",
+        "interview-preparation",
+        "mock-interview",
+        "Next.js",
+        "react",
+        "vapi",
+        "voice-ai"
+      ]
+    },
+    {
+      "title": "Money Transfer Project",
+      "description": "Temporal-based TypeScript workflow app that simulates reliable money transfers with retries, compensation (refund), and failure handling.",
+      "github": "https://github.com/supritR21/Money-Transfer-Project",
+      "category": [
+        1
+      ],
+      "show": true,
+      "tech": [
+        "TypeScript",
+        "compensation",
+        "distributed-systems",
+        "fault-tolerance",
+        "microservices",
+        "Node.js",
+        "retries",
+        "saga-pattern",
+        "temporal",
+        "workflow-orchestration"
+      ]
+    },
+    {
+      "title": "To Do List Blockchain",
+      "description": "Ethereum-based to-do list dApp with Solidity smart contract, Truffle deployment, and MetaMask-connected web interface for on-chain task management.",
+      "github": "https://github.com/supritR21/To-Do-List-Blockchain",
+      "category": [
+        1
+      ],
+      "show": true,
+      "tech": [
+        "JavaScript",
+        "blockchain",
+        "dapp",
+        "ethereum",
+        "ganache",
+        "metamask",
+        "smart-contracts",
+        "Solidity",
+        "todo-app",
+        "truffle",
+        "web3js"
+      ]
+    },
+    {
+      "title": "Langgraph Practice",
+      "description": "Practice repository for building LangGraph agents with tool calling, memory, state replay, and human-in-the-loop workflows.",
+      "github": "https://github.com/supritR21/LangGraph-Practice",
+      "category": [
+        1
+      ],
+      "show": true,
+      "tech": [
+        "Python",
+        "ai-agents",
+        "human-in-the-loop",
+        "langchain",
+        "LangGraph",
+        "llm",
+        "memory",
+        "state-machine",
+        "tavily-search",
+        "tool-calling"
+      ]
+    },
+    {
+      "title": "Rabbitmq1",
+      "description": "Node.js RabbitMQ demo with a simple publisher and consumer using amqplib and a local jobs queue.",
+      "github": "https://github.com/supritR21/RabbitMQ1",
+      "category": [
+        1
+      ],
+      "show": true,
+      "tech": [
+        "JavaScript",
+        "amqplib",
+        "asynchronous",
+        "backend",
+        "message-queue",
+        "messaging",
+        "microservices",
+        "Node.js",
+        "pub-sub",
+        "queue-processing",
+        "rabbitmq"
+      ]
+    },
+    {
+      "title": "News Writer Crewai",
+      "description": "Multi-agent CrewAI project that researches a topic and generates a markdown news article using Gemini and Serper tools.",
+      "github": "https://github.com/supritR21/News-writer-crewai",
+      "category": [
+        1
+      ],
+      "show": true,
+      "tech": [
+        "Python",
+        "ai-agents",
+        "automation",
+        "content-generation",
+        "CrewAI",
+        "google-gemini",
+        "langchain",
+        "llm",
+        "multi-agent",
+        "serper"
+      ]
+    },
+    {
+      "title": "Docker Registry",
+      "description": "Minimal Node.js Docker demo app with CI/CD workflow for building and pushing container images to Docker Hub.",
+      "github": "https://github.com/supritR21/Docker-registry",
+      "category": [
+        1
+      ],
+      "show": true,
+      "tech": [
+        "Dockerfile",
+        "ci-cd",
+        "containerization",
+        "devops",
+        "docker",
+        "docker-compose",
+        "dockerhub",
+        "github-actions",
+        "Node.js"
+      ]
+    },
+    {
+      "title": "Mcp Demo",
+      "description": "Python MCP demo that runs a tool-enabled Groq-powered chat agent using Playwright, Airbnb, and DuckDuckGo MCP servers.",
+      "github": "https://github.com/supritR21/mcp-demo",
+      "category": [
+        1
+      ],
+      "show": true,
+      "tech": [
+        "Python",
+        "ai-agents",
+        "chatbot",
+        "duckduckgo",
+        "groq",
+        "langchain",
+        "mcp",
+        "model-context-protocol",
+        "playwright",
+        "tool-calling"
+      ]
+    },
+    {
+      "title": "Agentic Langgraph",
+      "description": "Notebook-based LangGraph project demonstrating agent workflows, tool-calling chatbots, and LLM integrations with external tools.",
+      "github": "https://github.com/supritR21/Agentic-LangGraph",
+      "category": [
+        1
+      ],
+      "show": true,
+      "tech": [
+        "Jupyter Notebook",
+        "agentic-ai",
+        "ai-workflows",
+        "chatbot",
+        "groq",
+        "jupyter-notebook",
+        "langchain",
+        "LangGraph",
+        "llm",
+        "python",
+        "tool-calling"
+      ]
+    },
+    {
+      "title": "Library Backend",
+      "description": "Node.js and Express backend for a library system with MongoDB, user registration, and email OTP verification.",
+      "github": "https://github.com/supritR21/Library_backend",
+      "category": [
+        1
+      ],
+      "show": true,
+      "tech": [
+        "JavaScript",
+        "authentication",
+        "backend",
+        "Express",
+        "library-management",
+        "MongoDB",
+        "mongoose",
+        "Node.js",
+        "nodemailer",
+        "otp-verification",
+        "rest-api"
+      ]
+    },
+    {
+      "title": "Message Posting App",
+      "description": "React blog app with create, edit, delete, and search post features using React Router and a JSON Server backend.",
+      "github": "https://github.com/supritR21/Message_Posting_App",
+      "category": [
+        1
+      ],
+      "show": true,
+      "tech": [
+        "JavaScript",
+        "axios",
+        "blog-app",
+        "context-api",
+        "crud",
+        "frontend",
+        "json-server",
+        "react",
+        "react-router",
+        "web-app"
+      ]
+    },
+    {
+      "title": "Groceries Listing App",
+      "description": "React grocery list app with add, search, check/uncheck, and delete features using a local JSON API backend.",
+      "github": "https://github.com/supritR21/Groceries_Listing_App",
+      "category": [
+        1
+      ],
+      "show": true,
+      "tech": [
+        "JavaScript",
+        "crud",
+        "frontend",
+        "grocery-list",
+        "json-server",
+        "react",
+        "todo-app",
+        "web-app"
+      ]
+    },
+    {
+      "title": "Ecommerce Website",
+      "description": "Django ecommerce product listing app with Bootstrap UI, SQLite backend, and admin-managed product catalog.",
+      "github": "https://github.com/supritR21/Ecommerce_Website",
+      "category": [
+        1
+      ],
+      "show": true,
+      "tech": [
+        "Python",
+        "bootstrap",
+        "django",
+        "ecommerce",
+        "sqlite",
+        "web-app",
+        "backend",
+        "django-templates",
+        "full-stack",
+        "product-catalog"
+      ]
+    },
+    {
+      "title": "React Challenge01",
+      "description": "React app that fetches and displays JSONPlaceholder users, posts, and comments in a dynamic table interface.",
+      "github": "https://github.com/supritR21/React_Challenge01",
+      "category": [
+        1
+      ],
+      "show": true,
+      "tech": [
+        "JavaScript",
+        "frontend",
+        "hooks",
+        "jsonplaceholder-api",
+        "react",
+        "responsive-ui",
+        "web-app"
+      ]
+    },
+    {
+      "title": "Webserver",
+      "description": "Lightweight Node.js HTTP server with static file serving, event logging, and error tracking",
+      "github": "https://github.com/supritR21/WebServer",
+      "category": [
+        1
+      ],
+      "show": true,
+      "tech": [
+        "JavaScript",
+        "backend",
+        "event-emitter",
+        "file-serving",
+        "http-server",
+        "logging",
+        "node-js",
+        "static-server",
+        "web-server"
+      ]
+    },
+    {
+      "title": "Portfolio",
+      "description": "Personal portfolio website with responsive design, dark/light mode, and smooth navigation",
+      "github": "https://github.com/supritR21/Portfolio",
+      "category": [
+        1
+      ],
+      "show": true,
+      "tech": [
+        "HTML",
+        "css3",
+        "html5",
+        "JavaScript",
+        "personal-website",
+        "portfolio",
+        "responsive-design",
+        "scss",
+        "dark-mode",
+        "frontend",
+        "web-development"
+      ]
+    },
+    {
+      "title": "Drowsiness Detection System",
+      "description": "Real-time driver drowsiness detection system using facial landmarks, computer vision, and ensemble ML models to trigger fatigue alerts.",
+      "github": "https://github.com/supritR21/Drowsiness-Detection-System",
+      "category": [
+        2
+      ],
+      "show": true,
+      "tech": [
+        "Python",
+        "computer-vision",
+        "dlib",
+        "driver-monitoring-system",
+        "drowsiness-detection",
+        "facial-landmarks",
+        "machine-learning",
+        "mediapipe",
+        "opencv",
+        "random-forest",
+        "realtime-detection",
+        "road-safety",
+        "scikit-learn",
+        "svm",
+        "TensorFlow"
+      ]
+    },
+    {
+      "title": "Kafka Basics",
+      "description": "Node.js Kafka pub/sub demo using KafkaJS, with topic administration, partitioned producer routing, and consumer-group message processing.",
+      "github": "https://github.com/supritR21/kafka-basics",
+      "category": [
+        1
+      ],
+      "show": true,
+      "tech": [
+        "JavaScript",
+        "apache-kafka",
+        "consumer-groups",
+        "docker",
+        "event-driven",
+        "kafkajs",
+        "message-queue",
+        "Node.js",
+        "producer-consumer",
+        "pub-sub",
+        "realtime-messaging",
+        "stream-processing"
+      ]
+    },
+    {
+      "title": "Sem6 Mini Project",
+      "description": "",
+      "github": "https://github.com/supritR21/Sem6-Mini_Project",
+      "category": [
+        1
+      ],
+      "show": true,
+      "tech": [
+        "Python"
+      ]
+    },
+    {
+      "title": "Smart Meet",
+      "description": "",
+      "github": "https://github.com/supritR21/Smart-Meet",
+      "category": [
+        1
+      ],
+      "show": true,
+      "tech": [
+        "TypeScript"
+      ]
+    },
+    {
+      "title": "Chat App",
+      "description": "Full-stack MERN real-time chat app with JWT auth, Socket.IO messaging, user presence, and responsive React UI.",
+      "github": "https://github.com/supritR21/Chat-App",
+      "category": [
+        1
+      ],
+      "show": true,
+      "tech": [
+        "JavaScript",
+        "chat-application",
+        "cloudinary",
+        "daisyui",
+        "Express",
+        "full-stack",
+        "jwt-authentication",
+        "mern-stack",
+        "MongoDB",
+        "mongoose",
+        "Node.js",
+        "react",
+        "real-time-chat",
+        "redux-toolkit",
+        "socket-io",
+        "TailwindCSS"
+      ]
+    },
+    {
+      "title": "Booknest",
+      "description": "Full-stack MERN e-library management system with role-based access, book/PYQ management, borrowing workflows, and automated email notifications.",
       "github": "https://github.com/supritR21/BookNest",
-      "category": [1],
+      "category": [
+        1
+      ],
       "show": true,
-      "tech": ["React", "Node.js", "Express", "MongoDB", "JWT"]
+      "tech": [
+        "HTML",
+        "cloudinary",
+        "docker",
+        "e-library",
+        "Express",
+        "jwt-authentication",
+        "library-management-system",
+        "mern-stack",
+        "MongoDB",
+        "mongoose",
+        "Node.js",
+        "nodemailer",
+        "react",
+        "redux-toolkit",
+        "sendgrid",
+        "TailwindCSS",
+        "vite"
+      ]
     },
-    
     {
-        "title": "Mumbai House Price Prediction",
-        "description": "ML-based web app to predict residential property prices in Mumbai using Ridge Regression with interactive Streamlit interface.",
-        "github": "https://github.com/supritR21/House-Prediction-ML-Simple-",
-        "category": [2],
-        "show": true,
-        "tech": ["Python", "Streamlit", "scikit-learn", "Ridge Regression", "pandas"]
-    },
-    {
-      "title": "Stock Price Prediction",
-      "description": "ML-based stock price forecasting for MNCs with 30-day predictions using TensorFlow and Streamlit interface.",
-      "github": "https://github.com/supritR21/Stock-Price-Prediction-Using-Machine-Learning",
-      "category": [2],
+      "title": "House Price Prediction Mumbai",
+      "description": "A Python-based machine learning project that predicts Mumbai house prices from property features, using data preprocessing, model training, and evaluation to estimate price values.",
+      "github": "https://github.com/supritR21/House-Price-Prediction-Mumbai",
+      "category": [
+        2
+      ],
       "show": true,
-      "tech": ["Python", "TensorFlow", "Streamlit", "Machine Learning"]
+      "tech": [
+        "Python",
+        "data-science",
+        "house-price-prediction",
+        "machine-learning",
+        "pandas",
+        "predictive-modeling",
+        "real-estate",
+        "regression",
+        "scikit-learn"
+      ]
+    },
+    {
+      "title": "Supplier Risk Detector2",
+      "description": "AI-powered supplier risk assessment platform with geospatial analytics, real-time dashboards, and conversational insights for supply chain decision-making.",
+      "github": "https://github.com/supritR21/Supplier-Risk-Detector2",
+      "category": [
+        2
+      ],
+      "show": true,
+      "tech": [
+        "Python",
+        "ai",
+        "data-visualization",
+        "FastAPI",
+        "firecrawl",
+        "geospatial-analytics",
+        "LangGraph",
+        "logistics",
+        "Next.js",
+        "OpenAI",
+        "pinecone",
+        "PostgreSQL",
+        "prisma",
+        "rag",
+        "risk-assessment",
+        "streamlit",
+        "supply-chain",
+        "voice-assistant",
+        "supplier-risk-detection"
+      ]
     }
   ]
 }
