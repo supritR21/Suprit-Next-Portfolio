@@ -400,6 +400,7 @@ export default function MyPage() {
                         { label: "Location",  value: "Patna, India"   },
                         { label: "Degree",    value: "B.Tech CSE '27" },
                         { label: "Institute", value: "NIT Patna"      },
+                        { label: "CGPA", value: "8.49"      },
                         { label: "Available", value: "Internships"    },
                       ].map(({ label, value }) => (
                         <div key={label}>
@@ -759,7 +760,7 @@ export default function MyPage() {
                   <Button variation="primary">
                     <Link href="/projects">See All Projects</Link>
                   </Button>
-                  <span className="text-xs text-slate-400 font-semibold">4 projects · more on GitHub</span>
+                  <span className="text-xs text-slate-400 font-semibold">10+ projects · more on GitHub</span>
                 </motion.div>
               </div>
             </section>

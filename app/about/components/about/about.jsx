@@ -55,7 +55,7 @@ const fadeRight = (delay = 0) => ({
 const highlights = [
   { label: "Institute",  value: "NIT Patna"          },
   { label: "Degree",     value: "B.Tech CSE '27"      },
-  { label: "CPI",        value: "8.46 / 10"           },
+  { label: "CPI",        value: "8.49 / 10"           },
   { label: "Focus",      value: "GenAI · Full Stack"  },
   { label: "DSA Solved", value: "500+"                },
   { label: "Status",     value: "Open to Intern"      },
