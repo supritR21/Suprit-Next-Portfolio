@@ -760,7 +760,7 @@ export default function MyPage() {
                   <Button variation="primary">
                     <Link href="/projects">See All Projects</Link>
                   </Button>
-                  <span className="text-xs text-slate-400 font-semibold">10+ projects · more on GitHub</span>
+                  <span className="text-xs text-slate-400 font-semibold">20+ projects · more on GitHub</span>
                 </motion.div>
               </div>
             </section>
